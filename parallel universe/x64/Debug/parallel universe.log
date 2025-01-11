@@ -1,0 +1,9 @@
+﻿  Main.cpp
+D:\C++ Projects\GDPARCM\parallel universe\SFML-3.0.0\include\SFML\System\Exception.hpp(41,47): warning C4275: non dll-interface class 'std::runtime_error' used as base for dll-interface class 'sf::Exception'
+  (compiling source file 'Main.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\stdexcept(100,19):
+      see declaration of 'std::runtime_error'
+      D:\C++ Projects\GDPARCM\parallel universe\SFML-3.0.0\include\SFML\System\Exception.hpp(41,23):
+      see declaration of 'sf::Exception'
+  
+  parallel universe.vcxproj -> D:\C++ Projects\GDPARCM\parallel universe\x64\Debug\parallel universe.exe

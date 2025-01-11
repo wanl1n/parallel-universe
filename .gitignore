@@ -1,0 +1,8 @@
+.cache/
+.idea/
+.vs/
+.vscode/
+SFML-3.0.0/
+build/
+cmake-build-*/
+CMakeUserPresets.json
