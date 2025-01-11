@@ -13,7 +13,7 @@ int main()
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
-
+         
         window.clear();
         window.draw(shape);
         window.display();
