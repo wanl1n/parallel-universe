@@ -20,6 +20,7 @@ public:
 private:
 	
 	sf::RenderWindow window;
+	int iconObjectCount = 0;
 
 	void render();
 	void processEvents();

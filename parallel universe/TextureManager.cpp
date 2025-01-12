@@ -49,8 +49,9 @@ void TextureManager::loadSingleStreamAsset(int index)
 
 			
 			//<code here for loading asset>
-			String assetName = "";
-	
+			String assetName = "Tile " + std::to_string(fileNum);
+			this->instantiateAsTexture(entry.path().generic_string(), assetName, true);
+
 			std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
 			break;
 		}
@@ -102,6 +103,7 @@ void TextureManager::countStreamingAssets()
 
 void TextureManager::instantiateAsTexture(String path, String assetName, bool isStreaming)
 {
+	std::cout << "[TextureManager] Instantiating as Texture: " << path << std::endl;
 	sf::Texture* texture = new sf::Texture();
 	texture->loadFromFile(path);
 	this->textureMap[assetName].push_back(texture);

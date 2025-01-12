@@ -1,6 +1,7 @@
 #include "BaseRunner.h"
 #include  "GameObjectManager.h"
 #include "BGObject.h"
+#include "IconObject.h"
 #include "TextureManager.h"
 #include "TextureDisplay.h"
 #include "FPSCounter.h"
@@ -14,10 +15,24 @@ BaseRunner::BaseRunner() :
 	window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "HO: Entity Component", sf::Style::Close, sf::State::Fullscreen) {
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
+	for (int i = 0; i < 480; i++)
+		TextureManager::getInstance()->loadSingleStreamAsset(i);
 
 	//load objects
 	BGObject* bgObject = new BGObject("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
+
+	//// load icons
+	//IconObject* iconObj = nullptr;
+	//for (int i = 0; i < 480; i++) {
+	//	iconObj = new IconObject("IconObject", i);
+	//	GameObjectManager::getInstance()->addObject(iconObj);
+	//	sf::Vector2f size = iconObj->getLocalBounds().size;
+
+	//	int numCols = 30;
+	//	int col = i / numCols;
+	//	iconObj->setPosition(size.x * (i - col * numCols), size.y * col);
+	//}
 
 	TextureDisplay* display = new TextureDisplay();
 	GameObjectManager::getInstance()->addObject(display);
@@ -58,6 +73,19 @@ void BaseRunner::processEvents()
 
 void BaseRunner::update(sf::Time elapsedTime) {
 	GameObjectManager::getInstance()->update(elapsedTime);
+
+	if (this->iconObjectCount < 480) {
+		IconObject* iconObj = nullptr;
+		iconObj = new IconObject("IconObject", this->iconObjectCount);
+		GameObjectManager::getInstance()->addObject(iconObj);
+		sf::Vector2f size = iconObj->getLocalBounds().size;
+
+		int numCols = 30;
+		int col = this->iconObjectCount / numCols;
+		int row = this->iconObjectCount - col * numCols;
+		iconObj->setPosition(size.x * row, size.y * col);
+		iconObjectCount++;
+	}
 }
 
 void BaseRunner::render() {

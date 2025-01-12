@@ -2,13 +2,13 @@
 #include "AGameObject.h"
 class IconObject :    public AGameObject
 {
-public:
-	IconObject(String name, int textureIndex);
-	void initialize();
-	void processInput(sf::Event event);
-	void update(sf::Time deltaTime);
+	public:
+		IconObject(String name, int textureIndex);
+		void initialize();
+		void processInput(sf::Event event);
+		void update(sf::Time deltaTime);
 
-private:
-	int textureIndex = 0;
+	private:
+		int textureIndex = 0;
 };
 
