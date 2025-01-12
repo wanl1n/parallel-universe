@@ -73,19 +73,6 @@ void BaseRunner::processEvents()
 
 void BaseRunner::update(sf::Time elapsedTime) {
 	GameObjectManager::getInstance()->update(elapsedTime);
-
-	if (this->iconObjectCount < 480) {
-		IconObject* iconObj = nullptr;
-		iconObj = new IconObject("IconObject", this->iconObjectCount);
-		GameObjectManager::getInstance()->addObject(iconObj);
-		sf::Vector2f size = iconObj->getLocalBounds().size;
-
-		int numCols = 30;
-		int col = this->iconObjectCount / numCols;
-		int row = this->iconObjectCount - col * numCols;
-		iconObj->setPosition(size.x * row, size.y * col);
-		iconObjectCount++;
-	}
 }
 
 void BaseRunner::render() {

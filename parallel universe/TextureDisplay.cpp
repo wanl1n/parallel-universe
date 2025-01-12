@@ -21,9 +21,16 @@ void TextureDisplay::processInput(sf::Event event)
 
 void TextureDisplay::update(sf::Time deltaTime)
 {
-	this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
+	//this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
+	this->ticks += deltaTime.asMilliseconds();
 	
 	//<code here for spawning icon object periodically>
+	float interval = 200.0f;
+	if (this->ticks > interval && this->iconList.size() < 480) {
+		this->spawnObject();
+
+		this->ticks -= interval;
+	}
 }
 
 void TextureDisplay::spawnObject()
