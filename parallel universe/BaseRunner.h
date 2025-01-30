@@ -9,6 +9,10 @@ public:
 	static const int WINDOW_WIDTH = 1920;
 	static const int WINDOW_HEIGHT = 1080;
 
+	static BaseRunner* getInstance();
+	static BaseRunner* sharedInstance;
+	float getFPS() const;
+
 	BaseRunner(const BaseRunner&) = delete;
 	BaseRunner(BaseRunner&&) = delete;
 	BaseRunner& operator=(const BaseRunner&) = delete;
@@ -20,10 +24,9 @@ public:
 private:
 	
 	sf::RenderWindow window;
+	float fps = 0.0f;
 
 	void render();
 	void processEvents();
 	void update(sf::Time elapsedTime);
 };
-
-

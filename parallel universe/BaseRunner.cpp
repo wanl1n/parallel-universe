@@ -1,7 +1,6 @@
 #include "BaseRunner.h"
-#include  "GameObjectManager.h"
+#include "GameObjectManager.h"
 #include "BGObject.h"
-#include "IconObject.h"
 #include "TextureManager.h"
 #include "TextureDisplay.h"
 #include "FPSCounter.h"
@@ -9,10 +8,16 @@
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
 /// </summary>
-const sf::Time BaseRunner::TIME_PER_FRAME = sf::seconds(1.f / 60.f);
+const float FRAME_RATE = 60.0f;
+const sf::Time BaseRunner::TIME_PER_FRAME = sf::seconds(1.f / FRAME_RATE);
+BaseRunner* BaseRunner::sharedInstance = NULL;
 
 BaseRunner::BaseRunner() :
 	window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "HO: Entity Component", sf::Style::Close, sf::State::Fullscreen) {
+
+	sharedInstance = this;
+	this->window.setFramerateLimit(int(FRAME_RATE));
+
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
 	for (int i = 0; i < 480; i++)
@@ -21,18 +26,6 @@ BaseRunner::BaseRunner() :
 	//load objects
 	BGObject* bgObject = new BGObject("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
-
-	//// load icons
-	//IconObject* iconObj = nullptr;
-	//for (int i = 0; i < 480; i++) {
-	//	iconObj = new IconObject("IconObject", i);
-	//	GameObjectManager::getInstance()->addObject(iconObj);
-	//	sf::Vector2f size = iconObj->getLocalBounds().size;
-
-	//	int numCols = 30;
-	//	int col = i / numCols;
-	//	iconObj->setPosition(size.x * (i - col * numCols), size.y * col);
-	//}
 
 	TextureDisplay* display = new TextureDisplay();
 	GameObjectManager::getInstance()->addObject(display);
@@ -79,4 +72,14 @@ void BaseRunner::render() {
 	this->window.clear();
 	GameObjectManager::getInstance()->draw(&this->window);
 	this->window.display();
+}
+
+BaseRunner* BaseRunner::getInstance()
+{
+	return sharedInstance;
+}
+
+float BaseRunner::getFPS() const
+{
+	return this->fps;
 }

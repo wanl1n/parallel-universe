@@ -1,5 +1,11 @@
-﻿  TextureDisplay.cpp
+﻿  StreamAssetLoader.cpp
+  TextureDisplay.cpp
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureDisplay.cpp(39,70): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureDisplay.cpp(44,10): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureDisplay.cpp(45,10): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  TextureManager.cpp
+D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureManager.cpp(77,42): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureManager.cpp(92,37): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureManager.cpp(107,23): warning C4834: discarding return value of function with [[nodiscard]] attribute
+  Generating Code...
   parallel universe.vcxproj -> D:\C++ Projects\GDPARCM\parallel universe\x64\Debug\parallel universe.exe

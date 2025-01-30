@@ -6,8 +6,7 @@ SFML-3.0.0/
 build/
 render/
 x64/
+parallel universe\x64\
 cmake-build-*/
 CMakeUserPresets.json
-/parallel universe/x64
-/parallel universe/x64/Debug
-/parallel universe/x64/Debug/parallel.620c0394.tlog
+/x64
