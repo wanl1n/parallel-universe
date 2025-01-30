@@ -4,5 +4,7 @@
 .vscode/
 SFML-3.0.0/
 build/
+render/
+x64/
 cmake-build-*/
 CMakeUserPresets.json
