@@ -29,7 +29,7 @@ void StreamAssetLoader::run()
 	std::vector<String> tokens = StringUtils::split(path, '/');
 	String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
 
-	//TextureManager::getInstance()->instantiateAsTexture(path, assetName, true);
+	TextureManager::getInstance()->instantiateAsTexture(path, assetName, true);
 
 	std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
 

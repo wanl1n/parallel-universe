@@ -1,5 +1,7 @@
 #pragma once
 #include <unordered_map>
+
+#include "IExecutionEvent.h"
 #include "SFML/Graphics.hpp"
 
 class TextureManager
@@ -13,12 +15,13 @@ public:
 	static TextureManager* getInstance();
 	void loadFromAssetList(); //loading of all assets needed for startup
 	void loadStreamingAssets();
-	void loadSingleStreamAsset(int index); //loads a single streaming asset based on index in directory
+	void loadSingleStreamAsset(int index, IExecutionEvent* executionEvent); //loads a single streaming asset based on index in directory
 	sf::Texture* getFromTextureMap(const String assetName, int frameIndex);
 	int getNumFrames(const String assetName);
 
 	sf::Texture* getStreamTextureFromList(const int index);
 	int getNumLoadedStreamTextures() const;
+	void instantiateAsTexture(String path, String assetName, bool isStreaming);
 
 private:
 	TextureManager();
@@ -34,6 +37,5 @@ private:
 	int streamingAssetCount = 0;
 
 	void countStreamingAssets();
-	void instantiateAsTexture(String path, String assetName, bool isStreaming);
 
 };
