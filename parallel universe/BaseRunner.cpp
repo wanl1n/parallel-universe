@@ -20,8 +20,8 @@ BaseRunner::BaseRunner() :
 
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
-	for (int i = 0; i < 480; i++)
-		TextureManager::getInstance()->loadSingleStreamAsset(i);
+	/*for (int i = 0; i < 480; i++)
+		TextureManager::getInstance()->loadSingleStreamAsset(i);*/
 
 	//load objects
 	BGObject* bgObject = new BGObject("BGObject");

@@ -4,6 +4,7 @@
 #include "BaseRunner.h"
 #include "GameObjectManager.h"
 #include "IconObject.h"
+
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
 	
@@ -25,16 +26,31 @@ void TextureDisplay::update(sf::Time deltaTime)
 	this->ticks += deltaTime.asMilliseconds();
 	
 	//<code here for spawning icon object periodically>
-	float interval = 200.0f;
-	if (this->ticks > interval && this->iconList.size() < 480) {
+	if (this->streamingType == StreamingType::BATCH_LOAD && !this->startedStreaming && this->ticks > this->STREAMING_LOAD_DELAY)
+	{
+		this->startedStreaming = true;
+		this->ticks = 0.0f;
+		TextureManager::getInstance()->loadStreamingAssets();
+	}
+	else if (this->streamingType == StreamingType::SINGLE_STREAM && this->ticks > this->STREAMING_LOAD_DELAY && this->numDisplayed < 480)
+	{
+		std::cout << "[Texture Display]: SINGLE_STREAM Spawning object" << std::endl;
+		this->ticks = 0.0f;
+		TextureManager::getInstance()->loadSingleStreamAsset(this->numDisplayed);
+		this->numDisplayed++;
 		this->spawnObject();
-
-		this->ticks -= interval;
 	}
 }
 
+//void TextureDisplay::onFinishedExecution()
+//{
+//	this->spawnObject(); //executes spawn once the texture is ready.
+//}
+
 void TextureDisplay::spawnObject()
 {
+	//this->guard.lock();
+
 	String objectName = "Icon_" + to_string(this->iconList.size());
 	IconObject* iconObj = new IconObject(objectName, this->iconList.size());
 	this->iconList.push_back(iconObj);
@@ -54,4 +70,6 @@ void TextureDisplay::spawnObject()
 		this->rowGrid++;
 	}
 	GameObjectManager::getInstance()->addObject(iconObj);
+
+	//this->guard.unlock();
 }

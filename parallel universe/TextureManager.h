@@ -12,6 +12,7 @@ public:
 public:
 	static TextureManager* getInstance();
 	void loadFromAssetList(); //loading of all assets needed for startup
+	void loadStreamingAssets();
 	void loadSingleStreamAsset(int index); //loads a single streaming asset based on index in directory
 	sf::Texture* getFromTextureMap(const String assetName, int frameIndex);
 	int getNumFrames(const String assetName);
