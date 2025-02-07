@@ -61,7 +61,7 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* execution
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
 		if(index == fileNum)
 		{
-			IETThread::sleep(200);
+			//IETThread::sleep(200);
 
 			String path = entry.path().generic_string();
 
