@@ -16,9 +16,6 @@
     <Filter Include="Threading">
       <UniqueIdentifier>{db6ce544-6906-4349-9b38-8b2ebb7c1ef4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RTIOW">
-      <UniqueIdentifier>{1c951308-d7e2-483c-bbcd-7d1e86392bba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SFML">
       <UniqueIdentifier>{07df8c16-defc-4818-8e2a-478fc96c0d0d}</UniqueIdentifier>
     </Filter>
@@ -57,20 +54,17 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RTImage.cpp">
+    <ClCompile Include="Threading\HelloWorldThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IETThread.cpp">
-      <Filter>Threading</Filter>
+    <ClCompile Include="Threading\IETThread.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IExecutionEvent.cpp">
-      <Filter>Threading</Filter>
+    <ClCompile Include="Threading\IExecutionEvent.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StreamAssetLoader.cpp">
-      <Filter>Threading</Filter>
-    </ClCompile>
-    <ClCompile Include="HelloWorldThread.cpp">
-      <Filter>Threading</Filter>
+    <ClCompile Include="Threading\StreamAssetLoader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,50 +98,17 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RTImage.h">
+    <ClInclude Include="Threading\HelloWorldThread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>RTIOW</Filter>
+    <ClInclude Include="Threading\IETThread.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="color.h">
-      <Filter>RTIOW</Filter>
+    <ClInclude Include="Threading\IExecutionEvent.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hittable.h">
-      <Filter>RTIOW</Filter>
-    </ClInclude>
-    <ClInclude Include="hittable_list.h">
-      <Filter>RTIOW</Filter>
-    </ClInclude>
-    <ClInclude Include="interval.h">
-      <Filter>RTIOW</Filter>
-    </ClInclude>
-    <ClInclude Include="material.h">
-      <Filter>RTIOW</Filter>
-    </ClInclude>
-    <ClInclude Include="ray.h">
-      <Filter>RTIOW</Filter>
-    </ClInclude>
-    <ClInclude Include="rtweekend.h">
-      <Filter>RTIOW</Filter>
-    </ClInclude>
-    <ClInclude Include="sphere.h">
-      <Filter>RTIOW</Filter>
-    </ClInclude>
-    <ClInclude Include="Vec3.h">
-      <Filter>RTIOW</Filter>
-    </ClInclude>
-    <ClInclude Include="IETThread.h">
-      <Filter>Threading</Filter>
-    </ClInclude>
-    <ClInclude Include="IExecutionEvent.h">
-      <Filter>Threading</Filter>
-    </ClInclude>
-    <ClInclude Include="StreamAssetLoader.h">
-      <Filter>Threading</Filter>
-    </ClInclude>
-    <ClInclude Include="HelloWorldThread.h">
-      <Filter>Threading</Filter>
+    <ClInclude Include="Threading\StreamAssetLoader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

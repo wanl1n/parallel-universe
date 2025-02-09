@@ -34,22 +34,22 @@ void TextureDisplay::update(sf::Time deltaTime)
 	}
 	else if (this->streamingType == StreamingType::SINGLE_STREAM && this->ticks > this->STREAMING_LOAD_DELAY && this->numDisplayed < 480)
 	{
-		std::cout << "[Texture Display]: SINGLE_STREAM Spawning object" << std::endl;
 		this->ticks = 0.0f;
-		TextureManager::getInstance()->loadSingleStreamAsset(this->numDisplayed);
+		TextureManager::getInstance()->loadSingleStreamAsset(this->numDisplayed, this);
 		this->numDisplayed++;
-		this->spawnObject();
+
+		std::cout << "[Texture Display]: SINGLE_STREAM Spawning object" << std::endl;
 	}
 }
 
-//void TextureDisplay::onFinishedExecution()
-//{
-//	this->spawnObject(); //executes spawn once the texture is ready.
-//}
+void TextureDisplay::onFinishedExecution()
+{
+	this->spawnObject(); //executes spawn once the texture is ready.
+}
 
 void TextureDisplay::spawnObject()
 {
-	//this->guard.lock();
+	this->guard.lock();
 
 	String objectName = "Icon_" + to_string(this->iconList.size());
 	IconObject* iconObj = new IconObject(objectName, this->iconList.size());
@@ -71,5 +71,5 @@ void TextureDisplay::spawnObject()
 	}
 	GameObjectManager::getInstance()->addObject(iconObj);
 
-	//this->guard.unlock();
+	this->guard.unlock();
 }

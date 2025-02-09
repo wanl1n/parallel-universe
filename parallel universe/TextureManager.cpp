@@ -3,9 +3,9 @@
 #include <filesystem>
 #include "TextureManager.h"
 #include "StringUtils.h"
-#include "IETThread.h"
-//#include "StreamAssetLoader.h"
-//#include "IExecutionEvent.h"
+#include "Threading/IETThread.h"
+#include "Threading/StreamAssetLoader.h"
+#include "Threading/IExecutionEvent.h"
 
 //a singleton class
 TextureManager* TextureManager::sharedInstance = NULL;
@@ -54,22 +54,19 @@ void TextureManager::loadStreamingAssets()
 	}
 }
 
-void TextureManager::loadSingleStreamAsset(int index)
+void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* executionEvent)
 {
 	int fileNum = 0;
 	
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
 		if(index == fileNum)
 		{
-			IETThread::sleep(200);
-
 			String path = entry.path().generic_string();
-			/*StreamAssetLoader* assetLoader = new StreamAssetLoader(path, executionEvent);
-			assetLoader->start();*/
 
-			std::vector<String> tokens = StringUtils::split(path, '/');
-			String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
-			this->instantiateAsTexture(path, assetName, true);
+			// Create a thread.
+			StreamAssetLoader* assetLoader = new StreamAssetLoader(path, executionEvent);
+			assetLoader->start();
+
 			std::cout << "[TextureManager] Loaded single streaming texture: " << index << std::endl;
 			break;
 		}

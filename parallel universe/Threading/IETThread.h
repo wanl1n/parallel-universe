@@ -15,10 +15,10 @@ public:
 	void start(); //schedules thread execution
 	static void sleep(int ms);
 	bool isRunning();
+	void setRunning(bool running);
 
 protected:
 	virtual void run() = 0;
-
-	bool running = false;
+	bool running;
 };
 

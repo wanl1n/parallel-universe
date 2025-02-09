@@ -23,3 +23,8 @@ bool IETThread::isRunning()
 {
 	return this->running;
 }
+
+void IETThread::setRunning(bool running)
+{
+	this->running = running;
+}

@@ -1,7 +1,0 @@
-﻿  BaseRunner.cpp
-  TextureDisplay.cpp
-D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureDisplay.cpp(54,70): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureDisplay.cpp(59,10): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureDisplay.cpp(60,10): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-  parallel universe.vcxproj -> D:\C++ Projects\GDPARCM\parallel universe\x64\Debug\parallel universe.exe

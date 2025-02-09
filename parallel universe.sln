@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "parallel universe", "parall
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "helloworld", "helloworld\helloworld.vcxproj", "{BC6E1670-3A77-40BF-9215-8980C2ED35D2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rtiow", "rtiow\rtiow.vcxproj", "{7A063521-0E22-4C78-8593-C315B7C3C5B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{BC6E1670-3A77-40BF-9215-8980C2ED35D2}.Release|x64.Build.0 = Release|x64
 		{BC6E1670-3A77-40BF-9215-8980C2ED35D2}.Release|x86.ActiveCfg = Release|Win32
 		{BC6E1670-3A77-40BF-9215-8980C2ED35D2}.Release|x86.Build.0 = Release|Win32
+		{7A063521-0E22-4C78-8593-C315B7C3C5B8}.Debug|x64.ActiveCfg = Debug|x64
+		{7A063521-0E22-4C78-8593-C315B7C3C5B8}.Debug|x64.Build.0 = Debug|x64
+		{7A063521-0E22-4C78-8593-C315B7C3C5B8}.Debug|x86.ActiveCfg = Debug|Win32
+		{7A063521-0E22-4C78-8593-C315B7C3C5B8}.Debug|x86.Build.0 = Debug|Win32
+		{7A063521-0E22-4C78-8593-C315B7C3C5B8}.Release|x64.ActiveCfg = Release|x64
+		{7A063521-0E22-4C78-8593-C315B7C3C5B8}.Release|x64.Build.0 = Release|x64
+		{7A063521-0E22-4C78-8593-C315B7C3C5B8}.Release|x86.ActiveCfg = Release|Win32
+		{7A063521-0E22-4C78-8593-C315B7C3C5B8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

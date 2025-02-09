@@ -13,7 +13,8 @@ const sf::Time BaseRunner::TIME_PER_FRAME = sf::seconds(1.f / FRAME_RATE);
 BaseRunner* BaseRunner::sharedInstance = NULL;
 
 BaseRunner::BaseRunner() :
-	window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "HO: Entity Component", sf::Style::Close, sf::State::Fullscreen) {
+	//window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "HO: Entity Component", sf::Style::Close, sf::State::Fullscreen) {
+	window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "Young PS2: Batch Asset Loader", sf::Style::Close) {
 
 	sharedInstance = this;
 	this->window.setFramerateLimit(int(FRAME_RATE));
