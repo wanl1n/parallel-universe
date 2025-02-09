@@ -150,6 +150,10 @@
     <ClCompile Include="StringUtils.cpp" />
     <ClCompile Include="TextureDisplay.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Threading\HelloWorldThread.cpp" />
+    <ClCompile Include="Threading\IETThread.cpp" />
+    <ClCompile Include="Threading\IExecutionEvent.cpp" />
+    <ClCompile Include="Threading\StreamAssetLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h" />
@@ -162,6 +166,10 @@
     <ClInclude Include="StringUtils.h" />
     <ClInclude Include="TextureDisplay.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Threading\HelloWorldThread.h" />
+    <ClInclude Include="Threading\IETThread.h" />
+    <ClInclude Include="Threading\IExecutionEvent.h" />
+    <ClInclude Include="Threading\StreamAssetLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sfml-audio-3.dll" />

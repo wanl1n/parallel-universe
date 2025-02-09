@@ -1,6 +1,6 @@
 #pragma once
 #include "AGameObject.h"
-#include "IExecutionEvent.h"
+#include "Threading/IExecutionEvent.h"
 #include <mutex>
 
 class IconObject;

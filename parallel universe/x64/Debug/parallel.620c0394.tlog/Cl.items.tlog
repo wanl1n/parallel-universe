@@ -3,13 +3,13 @@ D:\C++ Projects\GDPARCM\parallel universe\parallel universe\BaseRunner.cpp;D:\C+
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\BGObject.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\BGObject.obj
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\FPSCounter.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\FPSCounter.obj
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\GameObjectManager.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\GameObjectManager.obj
-D:\C++ Projects\GDPARCM\parallel universe\parallel universe\HelloWorldThread.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\HelloWorldThread.obj
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\IconObject.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\IconObject.obj
-D:\C++ Projects\GDPARCM\parallel universe\parallel universe\IETThread.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\IETThread.obj
-D:\C++ Projects\GDPARCM\parallel universe\parallel universe\IExecutionEvent.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\IExecutionEvent.obj
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\Main.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\Main.obj
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\MathUtils.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\MathUtils.obj
-D:\C++ Projects\GDPARCM\parallel universe\parallel universe\StreamAssetLoader.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\StreamAssetLoader.obj
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\StringUtils.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\StringUtils.obj
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureDisplay.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\TextureDisplay.obj
 D:\C++ Projects\GDPARCM\parallel universe\parallel universe\TextureManager.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\TextureManager.obj
+D:\C++ Projects\GDPARCM\parallel universe\parallel universe\Threading\HelloWorldThread.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\HelloWorldThread.obj
+D:\C++ Projects\GDPARCM\parallel universe\parallel universe\Threading\IETThread.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\IETThread.obj
+D:\C++ Projects\GDPARCM\parallel universe\parallel universe\Threading\IExecutionEvent.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\IExecutionEvent.obj
+D:\C++ Projects\GDPARCM\parallel universe\parallel universe\Threading\StreamAssetLoader.cpp;D:\C++ Projects\GDPARCM\parallel universe\parallel universe\x64\Debug\StreamAssetLoader.obj

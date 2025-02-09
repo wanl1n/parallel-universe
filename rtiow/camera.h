@@ -24,15 +24,15 @@ public:
     RTImage* imagePNG;
     int threadsStarted = 0;
 
-    void render(const hittable& world) {
+    void render(const hittable& world, int num) {
         initialize();
 
-        std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+        //std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
         this->imagePNG = new RTImage(image_width, image_height);
 
-        int rowsPerThread = 1;
+        int rowsPerThread = 10;
         for (int j = 0; j < image_height; j+= rowsPerThread) {
-            std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
+            std::clog << "\rInitializing threads: " << (image_height - j) << ' ' << std::flush;
             
 			// Create a thread.
             cam_data data = {
@@ -51,12 +51,12 @@ public:
 
         while (threadsStarted != threadsCompleted)
         {
-            std::clog << "\rThreads running: " << threadsStarted - threadsCompleted << ' ' << std::flush;
+            std::clog << "\rRendering Image " << num << ". Rows left: " << threadsStarted - threadsCompleted << ' ' << std::flush;
         }
 
-        cv::String filename = "D:/C++ Projects/GDPARCM/parallel universe/render/The Render.png";
+        cv::String filename = "D:/C++ Projects/GDPARCM/parallel universe/render/The Render " + std::to_string(num) + ".png";
         this->imagePNG->saveImage(filename);
-        std::clog << "\rYour image is ready. Please enjoy!\n";
+        std::clog << "\rYour image has been saved as The Render " << num << ". Please enjoy!\n";
     }
 
     int threadsCompleted = 0;

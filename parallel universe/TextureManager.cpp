@@ -3,9 +3,9 @@
 #include <filesystem>
 #include "TextureManager.h"
 #include "StringUtils.h"
-#include "IETThread.h"
-#include "StreamAssetLoader.h"
-#include "IExecutionEvent.h"
+#include "Threading/IETThread.h"
+#include "Threading/StreamAssetLoader.h"
+#include "Threading/IExecutionEvent.h"
 
 //a singleton class
 TextureManager* TextureManager::sharedInstance = NULL;
