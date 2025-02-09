@@ -10,3 +10,4 @@ parallel universe\x64\
 cmake-build-*/
 CMakeUserPresets.json
 /x64
+/parallel universe/x64
