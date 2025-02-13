@@ -22,6 +22,8 @@ TextureManager* TextureManager::getInstance() {
 TextureManager::TextureManager()
 {
 	this->countStreamingAssets();
+	this->threadPool = new ThreadPool("Texture Manager Thread Pool", 12);
+	this->threadPool->startScheduler();
 }
 
 void TextureManager::loadFromAssetList()
@@ -65,7 +67,8 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* execution
 
 			// Create a thread.
 			StreamAssetLoader* assetLoader = new StreamAssetLoader(path, executionEvent);
-			assetLoader->start();
+			//assetLoader->start();
+			this->threadPool->scheduleTask(assetLoader);
 
 			std::cout << "[TextureManager] Loaded single streaming texture: " << index << std::endl;
 			break;
