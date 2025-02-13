@@ -26,25 +26,43 @@ void TextureDisplay::update(sf::Time deltaTime)
 	this->ticks += deltaTime.asMilliseconds();
 	
 	//<code here for spawning icon object periodically>
-	if (this->streamingType == StreamingType::BATCH_LOAD && !this->startedStreaming && this->ticks > this->STREAMING_LOAD_DELAY)
+	/*if (this->streamingType == StreamingType::BATCH_LOAD && !this->startedStreaming && this->ticks > this->STREAMING_LOAD_DELAY)
 	{
 		this->startedStreaming = true;
 		this->ticks = 0.0f;
 		TextureManager::getInstance()->loadStreamingAssets();
 	}
-	else if (this->streamingType == StreamingType::SINGLE_STREAM && this->ticks > this->STREAMING_LOAD_DELAY && this->numDisplayed < 480)
+	else*/
+	if (this->streamingType == StreamingType::BATCH_LOAD && this->ticks > this->STREAMING_LOAD_DELAY 
+		&& this->numDisplayed < 480)
+	{
+		this->ticks = 0.0f;
+		TextureManager::getInstance()->loadStreamingAssets(this->numDisplayed, batchSize, this);
+		this->numDisplayed += batchSize;
+	}
+	else if (this->streamingType == StreamingType::SINGLE_STREAM && this->ticks > this->STREAMING_LOAD_DELAY 
+		&& this->numDisplayed < 480)
 	{
 		this->ticks = 0.0f;
 		TextureManager::getInstance()->loadSingleStreamAsset(this->numDisplayed, this);
 		this->numDisplayed++;
 
-		std::cout << "[Texture Display]: SINGLE_STREAM Spawning object" << std::endl;
+		//std::cout << "[Texture Display]: SINGLE_STREAM Spawning object" << std::endl;
 	}
 }
 
 void TextureDisplay::onFinishedExecution()
 {
-	this->spawnObject(); //executes spawn once the texture is ready.
+	this->finishedThreads++;
+
+	if (this->streamingType == SINGLE_STREAM)
+		this->spawnObject(); //executes spawn once the texture is ready.
+
+	if (this->streamingType == BATCH_LOAD && this->finishedThreads % batchSize == 0)
+	{
+		for (int i = 0; i<batchSize; i++)
+			this->spawnObject(); //executes spawn once the batch is ready.
+	}
 }
 
 void TextureDisplay::spawnObject()
@@ -61,7 +79,7 @@ void TextureDisplay::spawnObject()
 	float y = this->rowGrid * IMG_HEIGHT;
 	iconObj->setPosition(x, y);
 
-	std::cout << "Set position: " << x << " " << y << std::endl;
+	//std::cout << "Set position: " << x << " " << y << std::endl;
 
 	this->columnGrid++;
 	if(this->columnGrid == this->MAX_COLUMN)

@@ -44,15 +44,30 @@ void TextureManager::loadFromAssetList()
 void TextureManager::loadStreamingAssets()
 {
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
-		//simulate loading of very large file
-		IETThread::sleep(200);
-
 		String path = entry.path().generic_string();
 		std::vector<String> tokens = StringUtils::split(path, '/');
 		String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
 		this->instantiateAsTexture(path, assetName, true);
 
-		std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
+		//std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
+	}
+}
+
+void TextureManager::loadStreamingAssets(int index, int batchSize, IExecutionEvent* executionEvent)
+{
+	int fileNum = 0;
+	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
+		if (fileNum >= index && fileNum < index+batchSize)
+		{
+			String path = entry.path().generic_string();
+
+			// Create a thread.
+			StreamAssetLoader* assetLoader = new StreamAssetLoader(path, executionEvent);
+			this->threadPool->scheduleTask(assetLoader);
+
+			//std::cout << "[TextureManager] Loaded batch streaming texture: " << fileNum << std::endl;
+		}
+		fileNum++;
 	}
 }
 
@@ -67,10 +82,9 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* execution
 
 			// Create a thread.
 			StreamAssetLoader* assetLoader = new StreamAssetLoader(path, executionEvent);
-			//assetLoader->start();
 			this->threadPool->scheduleTask(assetLoader);
 
-			std::cout << "[TextureManager] Loaded single streaming texture: " << index << std::endl;
+			//std::cout << "[TextureManager] Loaded single streaming texture: " << index << std::endl;
 			break;
 		}
 
@@ -133,5 +147,4 @@ void TextureManager::instantiateAsTexture(String path, String assetName, bool is
 	{
 		this->baseTextureList.push_back(texture);
 	}
-	
 }
