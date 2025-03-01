@@ -72,6 +72,12 @@
     <ClCompile Include="Threading\PoolWorkerThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Threading\BusyWaitSemaphore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Threading\IETSemaphore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h">
@@ -123,6 +129,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Threading\PoolWorkerThread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\BusyWaitSemaphore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\IETSemaphore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

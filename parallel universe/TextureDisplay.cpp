@@ -26,14 +26,13 @@ void TextureDisplay::update(sf::Time deltaTime)
 	this->ticks += deltaTime.asMilliseconds();
 	
 	//<code here for spawning icon object periodically>
-	/*if (this->streamingType == StreamingType::BATCH_LOAD && !this->startedStreaming && this->ticks > this->STREAMING_LOAD_DELAY)
+	if (this->streamingType == StreamingType::BATCH_LOAD && !this->startedStreaming && this->ticks > this->STREAMING_LOAD_DELAY)
 	{
 		this->startedStreaming = true;
 		this->ticks = 0.0f;
 		TextureManager::getInstance()->loadStreamingAssets();
 	}
-	else*/
-	if (this->streamingType == StreamingType::BATCH_LOAD && this->ticks > this->STREAMING_LOAD_DELAY 
+	else if (this->streamingType == StreamingType::BATCH_LOAD && this->ticks > this->STREAMING_LOAD_DELAY 
 		&& this->numDisplayed < 480)
 	{
 		this->ticks = 0.0f;
@@ -53,16 +52,7 @@ void TextureDisplay::update(sf::Time deltaTime)
 
 void TextureDisplay::onFinishedExecution()
 {
-	this->finishedThreads++;
-
-	if (this->streamingType == SINGLE_STREAM)
-		this->spawnObject(); //executes spawn once the texture is ready.
-
-	if (this->streamingType == BATCH_LOAD && this->finishedThreads % batchSize == 0)
-	{
-		for (int i = 0; i<batchSize; i++)
-			this->spawnObject(); //executes spawn once the batch is ready.
-	}
+	this->spawnObject();
 }
 
 void TextureDisplay::spawnObject()

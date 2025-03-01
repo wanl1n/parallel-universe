@@ -21,8 +21,6 @@ BaseRunner::BaseRunner() :
 
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
-	/*for (int i = 0; i < 480; i++)
-		TextureManager::getInstance()->loadSingleStreamAsset(i);*/
 
 	//load objects
 	BGObject* bgObject = new BGObject("BGObject");
@@ -36,19 +34,21 @@ BaseRunner::BaseRunner() :
 }
 
 void BaseRunner::run() {
-	sf::Clock CClock = sf::Clock();
-	sf::Time tTimeSinceLastUpdate = sf::Time::Zero;
+	sf::Clock clock;
+	sf::Time previousTime = clock.getElapsedTime();
+	sf::Time currentTime;
 
 	while (this->window.isOpen()) {
-		tTimeSinceLastUpdate += CClock.restart();
 
-		while (tTimeSinceLastUpdate > TIME_PER_FRAME) {
-			this->processEvents();
-			this->update(tTimeSinceLastUpdate);
-			tTimeSinceLastUpdate -= TIME_PER_FRAME;
-		}
+		currentTime = clock.getElapsedTime();
+		float deltaTime = currentTime.asSeconds() - previousTime.asSeconds();
+		this->fps = floor(1.0f / deltaTime);
 
-		this->render();
+		processEvents();
+		update(sf::seconds(1.0f / this->fps));
+		render();
+
+		previousTime = currentTime;
 	}
 }
 
