@@ -140,8 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AGameObject.cpp" />
+    <ClCompile Include="AnimatedObject.cpp" />
     <ClCompile Include="BaseRunner.cpp" />
     <ClCompile Include="BGObject.cpp" />
+    <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="LoadingScreen.cpp" />
+    <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Threading\IETSemaphore.cpp" />
     <ClCompile Include="Threading\BusyWaitSemaphore.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
@@ -158,11 +163,17 @@
     <ClCompile Include="Threading\IExecutionEvent.cpp" />
     <ClCompile Include="Threading\StreamAssetLoader.cpp" />
     <ClCompile Include="Threading\ThreadPool.cpp" />
+    <ClCompile Include="UserInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h" />
+    <ClInclude Include="AnimatedObject.h" />
     <ClInclude Include="BaseRunner.h" />
     <ClInclude Include="BGObject.h" />
+    <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="LoadingScreen.h" />
+    <ClInclude Include="Screen.h" />
+    <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Threading\IETSemaphore.h" />
     <ClInclude Include="Threading\BusyWaitSemaphore.h" />
     <ClInclude Include="FPSCounter.h" />
@@ -179,6 +190,7 @@
     <ClInclude Include="Threading\IWorkerAction.h" />
     <ClInclude Include="Threading\StreamAssetLoader.h" />
     <ClInclude Include="Threading\ThreadPool.h" />
+    <ClInclude Include="UserInput.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sfml-audio-3.dll" />

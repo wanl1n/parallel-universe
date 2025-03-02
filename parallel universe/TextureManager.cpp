@@ -41,6 +41,19 @@ void TextureManager::loadFromAssetList()
 	}
 }
 
+void TextureManager::loadSpriteSheets(std::string objName, std::string animName)
+{
+	const std::string SPRITESHEET_PATH = "Media/Loading/" + animName + "/";
+	for (const auto& entry : std::filesystem::directory_iterator(SPRITESHEET_PATH)) {
+		String path = entry.path().generic_string();
+		std::vector<String> tokens = StringUtils::split(path, '/');
+		String assetName = objName + " " + animName;
+		this->instantiateAsTexture(path, assetName, false);
+
+		//std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
+	}
+}
+
 void TextureManager::loadStreamingAssets()
 {
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {

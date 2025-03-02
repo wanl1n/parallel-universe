@@ -19,6 +19,9 @@
     <Filter Include="SFML">
       <UniqueIdentifier>{07df8c16-defc-4818-8e2a-478fc96c0d0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{a34a42ba-6316-469f-adbf-a66556c68b3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -78,6 +81,24 @@
     <ClCompile Include="Threading\IETSemaphore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UserInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManager.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h">
@@ -135,6 +156,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Threading\IETSemaphore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenManager.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

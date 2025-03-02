@@ -4,6 +4,7 @@
 #include "TextureManager.h"
 #include "TextureDisplay.h"
 #include "FPSCounter.h"
+#include "ScreenManager.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -13,21 +14,30 @@ const sf::Time BaseRunner::TIME_PER_FRAME = sf::seconds(1.f / FRAME_RATE);
 BaseRunner* BaseRunner::sharedInstance = NULL;
 
 BaseRunner::BaseRunner() :
-	//window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "HO: Entity Component", sf::Style::Close, sf::State::Fullscreen) {
-	window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "Young PS2: Batch Asset Loader", sf::Style::Close) {
+	window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "Meowrapy", sf::Style::Close) {
+
+	ShowWindow(window.getNativeHandle(), SW_SHOWMAXIMIZED);
 
 	sharedInstance = this;
 	this->window.setFramerateLimit(int(FRAME_RATE));
 
-	//load initial textures
+	//load initial textures: BG
 	TextureManager::getInstance()->loadFromAssetList();
 
+	this->initializeObjects();
+
+	ScreenManager::getInstance()->initialize();
+}
+
+void BaseRunner::initializeObjects()
+{
 	//load objects
 	BGObject* bgObject = new BGObject("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
 
 	TextureDisplay* display = new TextureDisplay();
 	GameObjectManager::getInstance()->addObject(display);
+	display->setActive(false);
 
 	FPSCounter* fpsCounter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject(fpsCounter);
@@ -54,6 +64,11 @@ void BaseRunner::run() {
 
 void BaseRunner::processEvents()
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+	{
+		this->window.close();
+	}
+
 	if (const std::optional event = window.pollEvent()) {
 		if (event->is<sf::Event::Closed>())
 		{

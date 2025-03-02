@@ -36,7 +36,8 @@ int GameObjectManager::activeObjects()
 
 void GameObjectManager::processInput(sf::Event event) {
 	for (int i = 0; i < this->gameObjectList.size(); i++) {
-		this->gameObjectList[i]->processInput(event);
+		if (this->gameObjectList[i]->isActive())
+			this->gameObjectList[i]->processInput(event);
 	}
 }
 
@@ -44,14 +45,16 @@ void GameObjectManager::update(sf::Time deltaTime)
 {
 	//std::cout << "Delta time: " << deltaTime.asSeconds() << "\n";
 	for (int i = 0; i < this->gameObjectList.size(); i++) {
-		this->gameObjectList[i]->update(deltaTime);
+		if (this->gameObjectList[i]->isActive())
+			this->gameObjectList[i]->update(deltaTime);
 	}
 }
 
 //draws the object if it contains a sprite
 void GameObjectManager::draw(sf::RenderWindow* window) {
 	for (int i = 0; i < this->gameObjectList.size(); i++) {
-		this->gameObjectList[i]->draw(window);
+		if (this->gameObjectList[i]->isActive())
+			this->gameObjectList[i]->draw(window);
 	}
 }
 

@@ -17,14 +17,17 @@ class AGameObject
 
 		virtual void setPosition(float x, float y);
 		virtual void setScale(float x, float y);
+		virtual void setActive(bool active);
 		virtual sf::FloatRect getLocalBounds();
 		virtual sf::Vector2f getPosition();
 		virtual sf::Vector2f getScale();
+		virtual bool isActive();
 
 	protected:
 		String name;
 		sf::Sprite* sprite;
 		sf::Texture* texture;
+		bool active;
 
 		float posX = 0.0f; float posY = 0.0f;
 		float scaleX = 1.0f; float scaleY = 1.0f;

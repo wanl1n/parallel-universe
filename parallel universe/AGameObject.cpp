@@ -3,6 +3,7 @@
 AGameObject::AGameObject(String name)
 {
 	this->name = name;
+	this->active = true;
 }
 
 AGameObject::~AGameObject() {
@@ -45,6 +46,11 @@ void AGameObject::setScale(float x, float y)
 	}
 }
 
+void AGameObject::setActive(bool active)
+{
+	this->active = active;
+}
+
 sf::Vector2f AGameObject::getPosition()
 {
 	return this->sprite->getPosition();
@@ -53,6 +59,11 @@ sf::Vector2f AGameObject::getPosition()
 sf::Vector2f AGameObject::getScale()
 {
 	return this->sprite->getScale();
+}
+
+bool AGameObject::isActive()
+{
+	return this->active;
 }
 
 sf::FloatRect AGameObject::getLocalBounds()

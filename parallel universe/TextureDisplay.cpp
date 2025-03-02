@@ -25,28 +25,15 @@ void TextureDisplay::update(sf::Time deltaTime)
 	//this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
 	this->ticks += deltaTime.asMilliseconds();
 	
-	//<code here for spawning icon object periodically>
-	if (this->streamingType == StreamingType::BATCH_LOAD && !this->startedStreaming && this->ticks > this->STREAMING_LOAD_DELAY)
+	if (this->ticks > this->STREAMING_LOAD_DELAY && this->numDisplayed < 2283)
 	{
-		this->startedStreaming = true;
-		this->ticks = 0.0f;
-		TextureManager::getInstance()->loadStreamingAssets();
-	}
-	else if (this->streamingType == StreamingType::BATCH_LOAD && this->ticks > this->STREAMING_LOAD_DELAY 
-		&& this->numDisplayed < 480)
-	{
-		this->ticks = 0.0f;
-		TextureManager::getInstance()->loadStreamingAssets(this->numDisplayed, batchSize, this);
-		this->numDisplayed += batchSize;
-	}
-	else if (this->streamingType == StreamingType::SINGLE_STREAM && this->ticks > this->STREAMING_LOAD_DELAY 
-		&& this->numDisplayed < 480)
-	{
+		this->loadingAssets = true;
 		this->ticks = 0.0f;
 		TextureManager::getInstance()->loadSingleStreamAsset(this->numDisplayed, this);
 		this->numDisplayed++;
-
-		//std::cout << "[Texture Display]: SINGLE_STREAM Spawning object" << std::endl;
+	} else
+	{
+		this->loadingAssets = false;
 	}
 }
 
@@ -59,7 +46,7 @@ void TextureDisplay::spawnObject()
 {
 	this->guard.lock();
 
-	String objectName = "Icon_" + to_string(this->iconList.size());
+	String objectName = "Cat_" + to_string(this->iconList.size());
 	IconObject* iconObj = new IconObject(objectName, this->iconList.size());
 	this->iconList.push_back(iconObj);
 
@@ -68,7 +55,7 @@ void TextureDisplay::spawnObject()
 	float x = this->columnGrid * IMG_WIDTH;
 	float y = this->rowGrid * IMG_HEIGHT;
 	iconObj->setPosition(x, y);
-
+	
 	//std::cout << "Set position: " << x << " " << y << std::endl;
 
 	this->columnGrid++;

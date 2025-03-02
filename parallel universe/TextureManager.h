@@ -11,11 +11,12 @@ class TextureManager
 public:
 	typedef std::string String;
 	typedef std::vector<sf::Texture*> TextureList;
-	typedef std::unordered_map<String, TextureList> HashTable;
+	typedef std::unordered_map<String, TextureList> SpriteSheetList;
 	
 public:
 	static TextureManager* getInstance();
 	void loadFromAssetList(); //loading of all assets needed for startup
+	void loadSpriteSheets(std::string objName, std::string animName); //loading spritesheets for the loadingscreen
 	void loadStreamingAssets();
 	void loadStreamingAssets(int index, int batchSize, IExecutionEvent* executionEvent);
 	void loadSingleStreamAsset(int index, IExecutionEvent* executionEvent); //loads a single streaming asset based on index in directory
@@ -32,7 +33,7 @@ private:
 	TextureManager& operator=(TextureManager const&) {};  // assignment operator is private
 	static TextureManager* sharedInstance;
 
-	HashTable textureMap;
+	SpriteSheetList textureMap;
 	TextureList baseTextureList;
 	TextureList streamTextureList;
 	ThreadPool* threadPool;

@@ -12,7 +12,7 @@ void BGObject::initialize()
 	std::cout << "Declared as " << this->getName() << "\n";
 
 	//assign texture
-	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("Desert", 0);
+	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("BG", 0);
 	this->sprite = new sf::Sprite(*texture);
 	texture->setRepeated(true);
 	this->sprite->setTexture(*texture);
