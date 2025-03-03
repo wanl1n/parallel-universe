@@ -144,8 +144,10 @@
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BaseRunner.cpp" />
     <ClCompile Include="BGObject.cpp" />
+    <ClCompile Include="Comeowser.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="LoadingScreen.cpp" />
+    <ClCompile Include="NoteObject.cpp" />
     <ClCompile Include="Threading\SceneLoader.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
@@ -174,8 +176,10 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BaseRunner.h" />
     <ClInclude Include="BGObject.h" />
+    <ClInclude Include="Comeowser.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="LoadingScreen.h" />
+    <ClInclude Include="NoteObject.h" />
     <ClInclude Include="Threading\SceneLoader.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenManager.h" />

@@ -21,6 +21,7 @@ void TextureDisplay::initialize()
 
 	while (this->iconList.size() < maxAssetCount)
 	{
+		std::cout << "Textures created: " << this->iconList.size() << std::endl;
 		this->loadingAssets = true;
 	}
 	this->loadingAssets = false;

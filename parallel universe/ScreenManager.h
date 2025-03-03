@@ -16,6 +16,7 @@ public:
 	void addScreen(Screen::ScreenName screenName, Screen* screen);
 	void loadScreen(Screen::ScreenName screenName);
 	void processInput();
+	void update(float deltaTime);
 
 private:
 	ScreenManager();

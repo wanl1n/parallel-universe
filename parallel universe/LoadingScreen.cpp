@@ -5,6 +5,7 @@
 #include "AnimatedObject.h"
 #include "AudioManager.h"
 #include "BaseRunner.h"
+#include "Comeowser.h"
 #include "GameObjectManager.h"
 #include "ScreenManager.h"
 #include "SpriteObject.h"
@@ -22,7 +23,29 @@ LoadingScreen::LoadingScreen() : Screen(ScreenName::loading)
 	keebObj->setScale(0.07f, 0.07f);
 	keebObj->setPosition(BaseRunner::WINDOW_WIDTH / 2 - keebObj->getWidth() * keebObj->getScale().x / 2, 500);
 
+	// rhythm game
+	// baseboard
+	SpriteObject* comeowser = new SpriteObject("Comeowser");
+	GameObjectManager::getInstance()->addObject(comeowser);
+	comeowser->setPosition(0, BaseRunner::WINDOW_HEIGHT / 2 - comeowser->getHeight()/2);
+	// notes
+	for (int i = 0; i < this->notesCount; i++)
+	{
+		NoteObject* note = new NoteObject(this->noteType[i]);
+		this->notes.push_back(note);
+		GameObjectManager::getInstance()->addObject(note);
+		note->getSprite()->setOrigin(sf::Vector2f(note->getWidth() / 2, note->getHeight() / 2));
+		if (this->noteType[i] < 0)
+		{
+			note->setPosition(-note->getWidth(), BaseRunner::WINDOW_HEIGHT / 2 + note->getHeight());
+		} else
+		{
+			note->setPosition(-note->getWidth(), BaseRunner::WINDOW_HEIGHT / 2 - note->getHeight());
+		}
+	}
+
 	AudioManager::getInstance()->loadAudioList(keebObj->getName(), "meowno", true);
+	AudioManager::getInstance()->playBGM(Screen::loading);
 
 	objectList.push_back("CatPiano");
 	objectList.push_back("Keyboard");
@@ -32,12 +55,44 @@ LoadingScreen::LoadingScreen() : Screen(ScreenName::loading)
 
 LoadingScreen::~LoadingScreen() {}
 
+void LoadingScreen::update(float deltaTime)
+{
+	Screen::update(deltaTime);
+
+	this->ticks += deltaTime;
+	if (this->ticks > this->timeStamps[nextNoteIndex] - timeOffset && nextNoteIndex < notesCount)
+	{
+		this->notes[nextNoteIndex]->startMoving(deltaTime);
+		nextNoteIndex++;
+	}
+
+	if (this->notes[latestNoteHit]->getPosition().x > MAX_THRESHOLD)
+		this->notes[latestNoteHit]->setActive(false);
+}
+
 void LoadingScreen::processInput()
 {
 	Screen::processInput();
 
 	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
 		ScreenManager::getInstance()->loadScreen(Screen::ScreenName::game);*/
+
+	if (latestNoteHit < nextNoteIndex)
+	{
+		// first in note
+		sf::Keyboard::Key key = sf::Keyboard::Key::Up;
+		if (this->noteType[latestNoteHit] < 0)
+			key = sf::Keyboard::Key::Down;
+
+		if (sf::Keyboard::isKeyPressed(key))
+		{
+			if (this->notes[latestNoteHit]->getPosition().x > MIN_THRESHOLD && 
+				this->notes[latestNoteHit]->getPosition().x <= MAX_THRESHOLD)
+				score++;
+			this->notes[latestNoteHit]->setActive(false);
+			latestNoteHit++;
+		}
+	}
 
 	if (AudioManager::getInstance()->isPlayingSFX())
 		catPiano->setAnimation(AnimatedObject::playing);

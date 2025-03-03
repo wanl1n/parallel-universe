@@ -22,36 +22,24 @@
     <Filter Include="Screens">
       <UniqueIdentifier>{a34a42ba-6316-469f-adbf-a66556c68b3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LoadingScreen">
+      <UniqueIdentifier>{af81fca8-501f-4ee8-8dce-07b5d1f1dcba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{824706ea-d47c-4131-ad8f-671efd283729}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AGameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BaseRunner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BGObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FPSCounter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjectManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IconObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MathUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StringUtils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureDisplay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
@@ -72,13 +60,7 @@
     <ClCompile Include="Screen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
-    <ClCompile Include="AnimatedObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AudioManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Threading\SceneLoader.cpp">
@@ -108,24 +90,39 @@
     <ClCompile Include="Threading\BusyWaitSemaphore.cpp">
       <Filter>Threading</Filter>
     </ClCompile>
+    <ClCompile Include="Comeowser.cpp">
+      <Filter>LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="IconObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="AGameObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSCounter.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="BGObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureDisplay.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="NoteObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AGameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseRunner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BGObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FPSCounter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IconObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MathUtils.h">
@@ -134,16 +131,7 @@
     <ClInclude Include="StringUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextureDisplay.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TextureManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Threading\IExecutionEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Threading\IWorkerAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UserInput.h">
@@ -160,9 +148,6 @@
     </ClInclude>
     <ClInclude Include="Screen.h">
       <Filter>Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimatedObject.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AudioManager.h">
       <Filter>Header Files</Filter>
@@ -193,6 +178,39 @@
     </ClInclude>
     <ClInclude Include="Threading\BusyWaitSemaphore.h">
       <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="AGameObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="BGObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSCounter.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectManager.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="IconObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureDisplay.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\IExecutionEvent.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Comeowser.h">
+      <Filter>LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading\IWorkerAction.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="NoteObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -42,4 +42,3 @@ private:
 	Mutex guard; //used to avoid possible race conditions when spawning objects. Not really required for this exercise. Will be explained in future lessons.
 	void spawnObject();
 };
-

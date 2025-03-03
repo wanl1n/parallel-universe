@@ -49,12 +49,11 @@ void ScreenManager::loadScreen(Screen::ScreenName screenName)
 void ScreenManager::processInput()
 {
 	this->currentScreen->processInput();
+}
 
-	/*std::cout << this->screenMap[Screen::ScreenName::game]->isLoading() << std::endl;
-	if (!this->screenMap[Screen::ScreenName::game]->isLoading())
-	{
-		this->loadScreen(Screen::ScreenName::game);
-	}*/
+void ScreenManager::update(float deltaTime)
+{
+	this->currentScreen->update(deltaTime);
 }
 
 ScreenManager::ScreenManager()

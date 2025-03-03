@@ -80,6 +80,7 @@ void BaseRunner::processEvents()
 
 void BaseRunner::update(sf::Time elapsedTime) {
 	GameObjectManager::getInstance()->update(elapsedTime);
+	ScreenManager::getInstance()->update(elapsedTime.asSeconds());
 }
 
 void BaseRunner::render() {

@@ -14,6 +14,7 @@ public:
 	Screen(ScreenName name);
 	~Screen();
 
+	virtual void update(float deltaTime);
 	virtual void processInput();
 	virtual void loadScreen();
 	virtual void unloadScreen();

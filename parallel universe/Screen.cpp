@@ -12,6 +12,10 @@ Screen::~Screen()
 {
 }
 
+void Screen::update(float deltaTime)
+{
+}
+
 void Screen::processInput()
 {
 }
