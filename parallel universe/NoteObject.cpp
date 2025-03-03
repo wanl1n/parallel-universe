@@ -43,6 +43,14 @@ void NoteObject::processInput(sf::Event event)
 
 void NoteObject::update(sf::Time deltaTime)
 {
+	if (popping)
+	{
+		this->popTimer += deltaTime.asSeconds();
+
+		if (popTimer > 0.2f)
+			this->active = false;
+	}
+
 	this->sprite->setOrigin(sf::Vector2f(this->getWidth() / 2, this->getHeight() / 2));
 	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("MeowNote " + animNames[currentAnim], 0);
 	this->setTexture(texture);
@@ -70,6 +78,9 @@ void NoteObject::setCurrentFrame(int nCurrentFrame)
 void NoteObject::setAnimation(AnimName animName)
 {
 	this->currentAnim = animName;
+	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("MeowNote " + animNames[currentAnim], 0);
+	this->setTexture(texture);
+	this->popping = true;
 }
 
 int NoteObject::random(int min, int max)

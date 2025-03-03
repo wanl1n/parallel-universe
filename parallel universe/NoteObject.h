@@ -17,6 +17,7 @@ public:
 	void setTexture(sf::Texture* texture);
 	void setCurrentFrame(int nCurrentFrame);
 	void setAnimation(AnimName animName);
+	void setPopping(bool popping) { this->popping = popping; }
 	int random(int min, int max);
 
 	void startMoving(float deltaTime)
@@ -39,5 +40,8 @@ private:
 
 	int type;
 	bool moving = false;
+
+	bool popping = false;
+	float popTimer = 0;
 };
 

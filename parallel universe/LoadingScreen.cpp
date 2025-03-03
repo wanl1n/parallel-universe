@@ -67,7 +67,8 @@ void LoadingScreen::update(float deltaTime)
 
 	if (nextNoteIndex < notesCount && this->notes[latestNoteHit]->getPosition().x > MAX_THRESHOLD)
 	{
-		this->notes[latestNoteHit]->setActive(false);
+		//this->notes[latestNoteHit]->setActive(false);
+		this->notes[latestNoteHit]->setAnimation(NoteObject::red);
 		latestNoteHit++;
 		this->result = "MISS";
 	}
@@ -103,17 +104,19 @@ void LoadingScreen::processInput()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && inputFrames == 0)
 		{
 			if (currentType == 1 &&
-				this->notes[latestNoteHit]->getPosition().x > MIN_THRESHOLD &&
-				this->notes[latestNoteHit]->getPosition().x <= MAX_THRESHOLD)
+				currentNote->getPosition().x > MIN_THRESHOLD &&
+				currentNote->getPosition().x <= MAX_THRESHOLD)
 			{
 				score++;
 				result = "HIT";
+				currentNote->setAnimation(NoteObject::pop);
 			} else
 			{
 				result = "MISS";
+				currentNote->setAnimation(NoteObject::red);
 			}
 			latestNoteHit++;
-			currentNote->setActive(false);
+			//currentNote->setActive(false);
 
 			inputFrames++;
 		}
@@ -122,18 +125,20 @@ void LoadingScreen::processInput()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && inputFrames == 0)
 		{
 			if (currentType == -1 &&
-				this->notes[latestNoteHit]->getPosition().x > MIN_THRESHOLD &&
-				this->notes[latestNoteHit]->getPosition().x <= MAX_THRESHOLD)
+				currentNote->getPosition().x > MIN_THRESHOLD &&
+				currentNote->getPosition().x <= MAX_THRESHOLD)
 			{
 				score++;
 				result = "HIT";
+				currentNote->setAnimation(NoteObject::pop);
 			}
 			else
 			{
 				result = "MISS";
+				currentNote->setAnimation(NoteObject::red);
 			}
 			latestNoteHit++;
-			currentNote->setActive(false);
+			//currentNote->setActive(false);
 
 			inputFrames++;
 		}
