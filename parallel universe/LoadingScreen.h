@@ -1,4 +1,5 @@
 #pragma once
+#include "Comeowser.h"
 #include "NoteObject.h"
 #include "Screen.h"
 
@@ -14,10 +15,11 @@ public:
 	void processInput() override;
 
 private:
-	const float MIN_THRESHOLD = 1200.0f;
-	const float MAX_THRESHOLD = 1600.0f;
+	const float MIN_THRESHOLD = 1400.0f;
+	const float MAX_THRESHOLD = 1700.0f;
 
 	AnimatedObject* catPiano;
+	Comeowser* bongoCat;
 	NotesList notes;
 	float timeStamps[10] = { 3.912f, 6.648f, 9.384f,
 							13.776f, 17.856f, 19.272f,
@@ -29,6 +31,10 @@ private:
 	int nextNoteIndex = 0;
 	int latestNoteHit = 0;
 	float ticks = 0;
+
+	std::string result = "";
 	int score = 0;
+
+	int inputFrames = 0;
 };
 

@@ -1,4 +1,2 @@
 Media/Textures/BG.png
 Media/Textures/Keyboard.png
-Media/Textures/Comeowser.png
-Media/Textures/MeowNote.png

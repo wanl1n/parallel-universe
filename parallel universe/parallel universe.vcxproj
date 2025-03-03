@@ -147,6 +147,7 @@
     <ClCompile Include="Comeowser.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="LoadingScreen.cpp" />
+    <ClCompile Include="LoadingText.cpp" />
     <ClCompile Include="NoteObject.cpp" />
     <ClCompile Include="Threading\SceneLoader.cpp" />
     <ClCompile Include="Screen.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Comeowser.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="LoadingScreen.h" />
+    <ClInclude Include="LoadingText.h" />
     <ClInclude Include="NoteObject.h" />
     <ClInclude Include="Threading\SceneLoader.h" />
     <ClInclude Include="Screen.h" />

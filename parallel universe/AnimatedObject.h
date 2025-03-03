@@ -17,7 +17,7 @@ public:
     void setAnimation(AnimName animName);
     int random(int min, int max);
 
-private:
+protected:
     std::unordered_map<AnimName, std::string> animNames;
 	std::unordered_map<AnimName, int> animFramesCount;
     AnimName currentAnim;

@@ -22,11 +22,11 @@
     <Filter Include="Screens">
       <UniqueIdentifier>{a34a42ba-6316-469f-adbf-a66556c68b3b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="LoadingScreen">
-      <UniqueIdentifier>{af81fca8-501f-4ee8-8dce-07b5d1f1dcba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject">
       <UniqueIdentifier>{824706ea-d47c-4131-ad8f-671efd283729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\LoadingScreen">
+      <UniqueIdentifier>{af81fca8-501f-4ee8-8dce-07b5d1f1dcba}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,9 +90,6 @@
     <ClCompile Include="Threading\BusyWaitSemaphore.cpp">
       <Filter>Threading</Filter>
     </ClCompile>
-    <ClCompile Include="Comeowser.cpp">
-      <Filter>LoadingScreen</Filter>
-    </ClCompile>
     <ClCompile Include="IconObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
@@ -117,7 +114,13 @@
     <ClCompile Include="TextureDisplay.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="LoadingText.cpp">
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClCompile>
     <ClCompile Include="NoteObject.cpp">
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Comeowser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -203,13 +206,16 @@
     <ClInclude Include="Threading\IExecutionEvent.h">
       <Filter>Threading</Filter>
     </ClInclude>
-    <ClInclude Include="Comeowser.h">
-      <Filter>LoadingScreen</Filter>
-    </ClInclude>
     <ClInclude Include="Threading\IWorkerAction.h">
       <Filter>Threading</Filter>
     </ClInclude>
+    <ClInclude Include="LoadingText.h">
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClInclude>
     <ClInclude Include="NoteObject.h">
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Comeowser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

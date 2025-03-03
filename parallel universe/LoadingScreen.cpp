@@ -7,50 +7,49 @@
 #include "BaseRunner.h"
 #include "Comeowser.h"
 #include "GameObjectManager.h"
+#include "LoadingText.h"
 #include "ScreenManager.h"
 #include "SpriteObject.h"
 
 LoadingScreen::LoadingScreen() : Screen(ScreenName::loading)
 {
-	std::cout << "Loading Screen initializing" << std::endl;
-
 	catPiano = new AnimatedObject("CatPiano");
 	GameObjectManager::getInstance()->addObject(catPiano);
 	catPiano->setPosition(BaseRunner::WINDOW_WIDTH / 2 - catPiano->getWidth()/2, 100.0f);
+	objectList.push_back("CatPiano");
 
 	SpriteObject* keebObj = new SpriteObject("Keyboard");
 	GameObjectManager::getInstance()->addObject(keebObj);
 	keebObj->setScale(0.07f, 0.07f);
 	keebObj->setPosition(BaseRunner::WINDOW_WIDTH / 2 - keebObj->getWidth() * keebObj->getScale().x / 2, 500);
+	objectList.push_back("Keyboard");
 
 	// rhythm game
 	// baseboard
-	SpriteObject* comeowser = new SpriteObject("Comeowser");
-	GameObjectManager::getInstance()->addObject(comeowser);
-	comeowser->setPosition(0, BaseRunner::WINDOW_HEIGHT / 2 - comeowser->getHeight()/2);
+	bongoCat = new Comeowser("Comeowser");
+	GameObjectManager::getInstance()->addObject(bongoCat);
+	bongoCat->setPosition(0, BaseRunner::WINDOW_HEIGHT / 2 - bongoCat->getHeight()/2);
+	objectList.push_back("Comeowser");
 	// notes
 	for (int i = 0; i < this->notesCount; i++)
 	{
-		NoteObject* note = new NoteObject(this->noteType[i]);
+		NoteObject* note = new NoteObject(i, this->noteType[i]);
 		this->notes.push_back(note);
 		GameObjectManager::getInstance()->addObject(note);
-		note->getSprite()->setOrigin(sf::Vector2f(note->getWidth() / 2, note->getHeight() / 2));
 		if (this->noteType[i] < 0)
 		{
-			note->setPosition(-note->getWidth(), BaseRunner::WINDOW_HEIGHT / 2 + note->getHeight());
+			note->setPosition(-note->getWidth(), BaseRunner::WINDOW_HEIGHT / 2 + 100 - 80);
 		} else
-		{
-			note->setPosition(-note->getWidth(), BaseRunner::WINDOW_HEIGHT / 2 - note->getHeight());
-		}
+			note->setPosition(-note->getWidth(), BaseRunner::WINDOW_HEIGHT / 2 - 100 - 80);
+		objectList.push_back(note->getName());
 	}
+	// score text
+	LoadingText* statsObj = new LoadingText(&this->score, &this->result);
+	GameObjectManager::getInstance()->addObject(statsObj);
+	objectList.push_back(statsObj->getName());
 
 	AudioManager::getInstance()->loadAudioList(keebObj->getName(), "meowno", true);
 	AudioManager::getInstance()->playBGM(Screen::loading);
-
-	objectList.push_back("CatPiano");
-	objectList.push_back("Keyboard");
-
-	std::cout << "Loading Screen initialized" << std::endl;
 }
 
 LoadingScreen::~LoadingScreen() {}
@@ -66,32 +65,83 @@ void LoadingScreen::update(float deltaTime)
 		nextNoteIndex++;
 	}
 
-	if (this->notes[latestNoteHit]->getPosition().x > MAX_THRESHOLD)
+	if (nextNoteIndex < notesCount && this->notes[latestNoteHit]->getPosition().x > MAX_THRESHOLD)
+	{
 		this->notes[latestNoteHit]->setActive(false);
+		latestNoteHit++;
+		this->result = "MISS";
+	}
 }
 
 void LoadingScreen::processInput()
 {
 	Screen::processInput();
+	
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) &&
+		!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
+	{
+		inputFrames = 0;
+		bongoCat->setAnimation(Comeowser::idle);
+	}
 
-	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
-		ScreenManager::getInstance()->loadScreen(Screen::ScreenName::game);*/
+	// todo : input audio
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
+	{
+		bongoCat->setAnimation(Comeowser::up);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
+	{
+		bongoCat->setAnimation(Comeowser::down);
+	}
 
 	if (latestNoteHit < nextNoteIndex)
 	{
+		NoteObject* currentNote = this->notes[latestNoteHit];
+		int currentType = this->noteType[latestNoteHit];
+
+		// note type = 1; up
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && inputFrames == 0)
+		{
+			if (currentType == 1 &&
+				this->notes[latestNoteHit]->getPosition().x > MIN_THRESHOLD &&
+				this->notes[latestNoteHit]->getPosition().x <= MAX_THRESHOLD)
+			{
+				score++;
+				result = "HIT";
+			} else
+			{
+				result = "MISS";
+			}
+			latestNoteHit++;
+			currentNote->setActive(false);
+
+			inputFrames++;
+		}
+
+		// note type = -1; down
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && inputFrames == 0)
+		{
+			if (currentType == -1 &&
+				this->notes[latestNoteHit]->getPosition().x > MIN_THRESHOLD &&
+				this->notes[latestNoteHit]->getPosition().x <= MAX_THRESHOLD)
+			{
+				score++;
+				result = "HIT";
+			}
+			else
+			{
+				result = "MISS";
+			}
+			latestNoteHit++;
+			currentNote->setActive(false);
+
+			inputFrames++;
+		}
+
 		// first in note
 		sf::Keyboard::Key key = sf::Keyboard::Key::Up;
 		if (this->noteType[latestNoteHit] < 0)
 			key = sf::Keyboard::Key::Down;
-
-		if (sf::Keyboard::isKeyPressed(key))
-		{
-			if (this->notes[latestNoteHit]->getPosition().x > MIN_THRESHOLD && 
-				this->notes[latestNoteHit]->getPosition().x <= MAX_THRESHOLD)
-				score++;
-			this->notes[latestNoteHit]->setActive(false);
-			latestNoteHit++;
-		}
 	}
 
 	if (AudioManager::getInstance()->isPlayingSFX())

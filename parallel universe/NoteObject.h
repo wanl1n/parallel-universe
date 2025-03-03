@@ -1,14 +1,23 @@
 #pragma once
 #include "SpriteObject.h"
 
-class NoteObject : public SpriteObject
+class NoteObject : public AGameObject
 {
 public:
-	NoteObject(int type);
+	enum AnimName { idle = 0, pop, red };
+
+	NoteObject(int index, int type);
 	~NoteObject();
 
 	void initialize() override;
+	void processInput(sf::Event event) override;
 	void update(sf::Time deltaTime) override;
+
+	void incrementFrame();
+	void setTexture(sf::Texture* texture);
+	void setCurrentFrame(int nCurrentFrame);
+	void setAnimation(AnimName animName);
+	int random(int min, int max);
 
 	void startMoving(float deltaTime)
 	{
@@ -16,10 +25,19 @@ public:
 		this->moving = true;
 	}
 
+	sf::Sprite* getSprite()
+	{
+		return this->sprite;
+	}
+
 private:
-	const float MAX_THRESHOLD = 1600.0f;
+	const float MAX_THRESHOLD = 1700.0f;
+
+	std::unordered_map<AnimName, std::string> animNames;
+	std::unordered_map<AnimName, int> animFramesCount;
+	AnimName currentAnim;
+
 	int type;
-	sf::Keyboard::Key inputType;
 	bool moving = false;
 };
 

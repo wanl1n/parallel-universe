@@ -31,7 +31,11 @@ void FPSCounter::processInput(sf::Event event)
 
 void FPSCounter::update(sf::Time deltaTime)
 {
-	this->updateFPS(deltaTime);
+	if (clock.getElapsedTime().asSeconds() > 0.5f)
+	{
+		this->updateFPS(deltaTime);
+		clock.restart();
+	}
 }
 
 void FPSCounter::draw(sf::RenderWindow* targetWindow)
