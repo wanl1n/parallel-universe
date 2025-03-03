@@ -4,6 +4,7 @@
 #include "Screen.h"
 #include "GameScreen.h"
 #include "LoadingScreen.h"
+#include "Threading/ThreadPool.h"
 
 class ScreenManager
 {
@@ -12,7 +13,9 @@ public:
 	static ScreenManager* getInstance();
 	void initialize();
 
+	void addScreen(Screen::ScreenName screenName, Screen* screen);
 	void loadScreen(Screen::ScreenName screenName);
+	void processInput();
 
 private:
 	ScreenManager();
@@ -20,7 +23,7 @@ private:
 	ScreenManager& operator=(ScreenManager const&) {};  // assignment operator is private
 	static ScreenManager* sharedInstance;
 
-	bool loading = false;
 	Screen* currentScreen;
 	ScreenMap screenMap;
+	ThreadPool* threadPool;
 };

@@ -23,5 +23,6 @@ private:
     AnimName currentAnim;
 
     int fps = 10;
+    float ticks = 0;
 };
 

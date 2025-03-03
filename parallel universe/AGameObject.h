@@ -23,6 +23,9 @@ class AGameObject
 		virtual sf::Vector2f getScale();
 		virtual bool isActive();
 
+		virtual float getWidth();
+		virtual float getHeight();
+
 	protected:
 		String name;
 		sf::Sprite* sprite;

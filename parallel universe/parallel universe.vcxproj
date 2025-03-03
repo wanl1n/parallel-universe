@@ -141,12 +141,15 @@
   <ItemGroup>
     <ClCompile Include="AGameObject.cpp" />
     <ClCompile Include="AnimatedObject.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BaseRunner.cpp" />
     <ClCompile Include="BGObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="LoadingScreen.cpp" />
+    <ClCompile Include="Threading\SceneLoader.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="SpriteObject.cpp" />
     <ClCompile Include="Threading\IETSemaphore.cpp" />
     <ClCompile Include="Threading\BusyWaitSemaphore.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
@@ -168,12 +171,15 @@
   <ItemGroup>
     <ClInclude Include="AGameObject.h" />
     <ClInclude Include="AnimatedObject.h" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BaseRunner.h" />
     <ClInclude Include="BGObject.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="LoadingScreen.h" />
+    <ClInclude Include="Threading\SceneLoader.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="SpriteObject.h" />
     <ClInclude Include="Threading\IETSemaphore.h" />
     <ClInclude Include="Threading\BusyWaitSemaphore.h" />
     <ClInclude Include="FPSCounter.h" />

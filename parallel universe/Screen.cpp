@@ -1,6 +1,7 @@
 #include "Screen.h"
 
 #include "GameObjectManager.h"
+#include "ScreenManager.h"
 
 Screen::Screen(ScreenName name)
 {
@@ -8,6 +9,10 @@ Screen::Screen(ScreenName name)
 }
 
 Screen::~Screen()
+{
+}
+
+void Screen::processInput()
 {
 }
 
@@ -27,4 +32,8 @@ void Screen::unloadScreen()
 		AGameObject* gameObject = GameObjectManager::getInstance()->findObjectByName(objectName);
 		gameObject->setActive(false);
 	}
+}
+
+void Screen::onFinishedExecution()
+{
 }

@@ -15,6 +15,8 @@ public:
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
 
+	bool isLoading() { return this->loadingAssets; }
+
 	void onFinishedExecution() override;
 
 private:
@@ -26,8 +28,8 @@ private:
 	const float STREAMING_LOAD_DELAY = 100.0f;
 	float ticks = 0.0f;
 	bool startedStreaming = false;
-	bool loadingAssets = false;
-	int batchSize = 5;
+	bool loadingAssets = true;
+	int maxAssetCount = 1000;
 
 	int finishedThreads = 0;
 

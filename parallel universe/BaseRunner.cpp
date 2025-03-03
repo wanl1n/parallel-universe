@@ -35,10 +35,6 @@ void BaseRunner::initializeObjects()
 	BGObject* bgObject = new BGObject("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
 
-	TextureDisplay* display = new TextureDisplay();
-	GameObjectManager::getInstance()->addObject(display);
-	display->setActive(false);
-
 	FPSCounter* fpsCounter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject(fpsCounter);
 }
@@ -64,6 +60,8 @@ void BaseRunner::run() {
 
 void BaseRunner::processEvents()
 {
+	ScreenManager::getInstance()->processInput();
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 	{
 		this->window.close();

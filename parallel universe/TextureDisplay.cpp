@@ -7,12 +7,24 @@
 
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
-	
+	this->active = false;
 }
 
 void TextureDisplay::initialize()
 {
-	
+	std::cout << "Texture Display initializing" << std::endl;
+	while (this->numDisplayed < maxAssetCount)
+	{
+		TextureManager::getInstance()->loadSingleStreamAsset(this->numDisplayed, this);
+		this->numDisplayed++;
+	}
+
+	while (this->iconList.size() < maxAssetCount)
+	{
+		this->loadingAssets = true;
+	}
+	this->loadingAssets = false;
+	std::cout << "Texture Display initialized" << std::endl;
 }
 
 void TextureDisplay::processInput(sf::Event event)
@@ -22,18 +34,9 @@ void TextureDisplay::processInput(sf::Event event)
 
 void TextureDisplay::update(sf::Time deltaTime)
 {
-	//this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
-	this->ticks += deltaTime.asMilliseconds();
-	
-	if (this->ticks > this->STREAMING_LOAD_DELAY && this->numDisplayed < 2283)
+	for (IconObject* icon : this->iconList)
 	{
-		this->loadingAssets = true;
-		this->ticks = 0.0f;
-		TextureManager::getInstance()->loadSingleStreamAsset(this->numDisplayed, this);
-		this->numDisplayed++;
-	} else
-	{
-		this->loadingAssets = false;
+		icon->setActive(active);
 	}
 }
 
@@ -65,6 +68,7 @@ void TextureDisplay::spawnObject()
 		this->rowGrid++;
 	}
 	GameObjectManager::getInstance()->addObject(iconObj);
+	iconObj->setActive(false);
 
 	this->guard.unlock();
 }

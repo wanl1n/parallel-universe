@@ -66,6 +66,16 @@ bool AGameObject::isActive()
 	return this->active;
 }
 
+float AGameObject::getWidth()
+{
+	return this->sprite->getTexture().getSize().x;
+}
+
+float AGameObject::getHeight()
+{
+	return this->sprite->getTexture().getSize().y;
+}
+
 sf::FloatRect AGameObject::getLocalBounds()
 {
 	return this->sprite->getLocalBounds();

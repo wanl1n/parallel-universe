@@ -2,7 +2,10 @@
 #include <string>
 #include <vector>
 
-class Screen
+#include "AnimatedObject.h"
+#include "Threading/IExecutionEvent.h"
+
+class Screen : public IExecutionEvent
 {
 public:
 	typedef std::vector<std::string> ObjectList;
@@ -11,11 +14,16 @@ public:
 	Screen(ScreenName name);
 	~Screen();
 
+	virtual void processInput();
 	virtual void loadScreen();
 	virtual void unloadScreen();
+	void onFinishedExecution() override;
+
 	ScreenName getName() { return name; }
+	bool isLoading() { return load; }
 
 protected:
 	ScreenName name;
 	ObjectList objectList;
+	bool load = true;
 };

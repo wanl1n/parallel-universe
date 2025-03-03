@@ -11,7 +11,7 @@ AnimatedObject::AnimatedObject(std::string name)
     this->animNames[idle] = "idle";
     this->animNames[playing] = "playing";
 
-    this->animFramesCount[idle] = 3;
+    this->animFramesCount[idle] = 2;
     this->animFramesCount[playing] = 31;
 
 	this->currentAnim = idle;
@@ -34,14 +34,11 @@ void AnimatedObject::processInput(sf::Event event)
 
 void AnimatedObject::update(sf::Time deltaTime)
 {
-	this->incrementFrame();
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+	this->ticks += deltaTime.asSeconds();
+    if (this->ticks > 1.0f / this->fps)
     {
-        this->setAnimation(playing);
-    } else
-    {
-		this->setAnimation(idle);
+        this->ticks = 0;
+        this->incrementFrame();
     }
 }
 
