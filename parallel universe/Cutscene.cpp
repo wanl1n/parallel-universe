@@ -1,5 +1,7 @@
 #include "Cutscene.h"
 
+#include "AudioManager.h"
+#include "Screen.h"
 #include "TextureManager.h"
 
 Cutscene::Cutscene(std::string name)
@@ -16,10 +18,15 @@ void Cutscene::update(sf::Time deltaTime)
 {
     if (!loading)
     {
+        if (!startedMusic)
+        {
+            AudioManager::getInstance()->playBGM(Screen::ScreenName::game);
+            startedMusic = true;
+        }
         this->ticks += deltaTime.asSeconds();
         if (this->ticks > 1.0f / this->fps)
         {
-            this->ticks = 0;
+            this->ticks -= 1.0f / this->fps;
             this->incrementFrame();
         }
     }

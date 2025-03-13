@@ -46,7 +46,7 @@ void Pot::water()
 		this->ticks = 0;
 		this->dry = false;
 		this->sprite->setTexture(*watered);
-		AudioManager::getInstance()->playSFX(name + " zen", 0);
+		AudioManager::getInstance()->playSFX(name + " zen", 1);
 		score++;
 	}
 }

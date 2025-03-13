@@ -32,8 +32,6 @@ void GameScreen::initializeDisplay()
 
 void GameScreen::loadScreen()
 {
-	AudioManager::getInstance()->playBGM(Screen::ScreenName::game);
-
 	Screen::loadScreen();
 }
 

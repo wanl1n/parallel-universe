@@ -19,9 +19,10 @@ public:
 
 protected:
     int fps = 20;
-    int totalFrames = 800;
+    int totalFrames = 3190;
     float ticks = 0;
-    int index = 0;
+    int index = -1;
     bool loading = true;
+    bool startedMusic = false;
 };
 
