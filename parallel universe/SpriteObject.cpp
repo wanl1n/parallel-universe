@@ -3,12 +3,15 @@
 #include "BaseRunner.h"
 #include "TextureManager.h"
 
-SpriteObject::SpriteObject(String name) : AGameObject(name) {}
+SpriteObject::SpriteObject(String name, String objName) : AGameObject(name)
+{
+	this->objName = objName;
+}
 
 void SpriteObject::initialize()
 {
 	//assign texture
-	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap(this->name, 0);
+	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap(this->objName, 0);
 
 	this->sprite = new sf::Sprite(*texture);
 	this->sprite->setTexture(*texture);

@@ -13,6 +13,7 @@ public:
 
 	Screen(ScreenName name);
 	~Screen();
+	virtual void initializeDisplay();
 
 	virtual void update(float deltaTime);
 	virtual void processInput();

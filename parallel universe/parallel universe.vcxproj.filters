@@ -28,6 +28,9 @@
     <Filter Include="GameObject\LoadingScreen">
       <UniqueIdentifier>{af81fca8-501f-4ee8-8dce-07b5d1f1dcba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\GameScreen">
+      <UniqueIdentifier>{78a898c1-e38c-49fe-b2bd-a8833ce487c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -90,12 +93,6 @@
     <ClCompile Include="Threading\BusyWaitSemaphore.cpp">
       <Filter>Threading</Filter>
     </ClCompile>
-    <ClCompile Include="IconObject.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimatedObject.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="AGameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
@@ -111,17 +108,32 @@
     <ClCompile Include="SpriteObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="TextureDisplay.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="LoadingText.cpp">
       <Filter>GameObject\LoadingScreen</Filter>
     </ClCompile>
     <ClCompile Include="NoteObject.cpp">
       <Filter>GameObject\LoadingScreen</Filter>
     </ClCompile>
+    <ClCompile Include="AnimatedObject.cpp">
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="IconObject.cpp">
+      <Filter>GameObject\GameScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureDisplay.cpp">
+      <Filter>GameObject\GameScreen</Filter>
+    </ClCompile>
     <ClCompile Include="Comeowser.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Plant.cpp">
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Pot.cpp">
+      <Filter>GameObject\LoadingScreen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,9 +197,6 @@
     <ClInclude Include="AGameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="AnimatedObject.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="BGObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
@@ -195,12 +204,6 @@
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="GameObjectManager.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="IconObject.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureDisplay.h">
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Threading\IExecutionEvent.h">
@@ -215,8 +218,26 @@
     <ClInclude Include="NoteObject.h">
       <Filter>GameObject\LoadingScreen</Filter>
     </ClInclude>
+    <ClInclude Include="AnimatedObject.h">
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="IconObject.h">
+      <Filter>GameObject\GameScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureDisplay.h">
+      <Filter>GameObject\GameScreen</Filter>
+    </ClInclude>
     <ClInclude Include="Comeowser.h">
-      <Filter>Header Files</Filter>
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Plant.h">
+      <Filter>GameObject\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Pot.h">
+      <Filter>GameObject\LoadingScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

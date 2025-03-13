@@ -2,6 +2,8 @@
 #include <vector>
 #include <windows.h>
 
+#include "FPSCounter.h"
+
 using namespace std;
 class BaseRunner
 {
@@ -24,7 +26,6 @@ public:
 	void run();
 
 private:
-	
 	sf::RenderWindow window;
 	float fps = 0.0f;
 

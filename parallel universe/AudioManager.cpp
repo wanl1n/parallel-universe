@@ -54,9 +54,12 @@ void AudioManager::playBGM(Screen::ScreenName screenName)
 	if (screenName == Screen::game)
 		bgmToPlay = new sf::Music(AUDIO_PATH + "A Cruel Neko's Nyasis.mp3"); // Throws sf::Exception if an error occurs
 	else
-		bgmToPlay = new sf::Music(AUDIO_PATH + "A Cruel Neko's Nyasis.mp3"); // Throws sf::Exception if an error occurs
+	{
+		bgmToPlay = new sf::Music(AUDIO_PATH + "Zen Garden.mp3"); // Throws sf::Exception if an error occurs
+		bgmToPlay->setVolume(2.0f);
+	}
 
-	bgmToPlay->setVolume(0.5f);
+	bgmToPlay->setVolume(1.0f);
 	bgmToPlay->setLooping(true);
 	bgmToPlay->play();
 }
@@ -64,7 +67,8 @@ void AudioManager::playBGM(Screen::ScreenName screenName)
 void AudioManager::playSFX(String assetName, int clipIndex)
 {
 	sfxToPlay = this->audioPackList[assetName][clipIndex];
-	sfxToPlay->play();
+	if (!this->isPlayingSFX())
+		sfxToPlay->play();
 }
 
 bool AudioManager::isPlayingSFX()

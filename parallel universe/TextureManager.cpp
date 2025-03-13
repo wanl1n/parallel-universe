@@ -43,7 +43,7 @@ void TextureManager::loadFromAssetList()
 
 void TextureManager::loadSpriteSheets(std::string objName, std::string animName)
 {
-	const std::string SPRITESHEET_PATH = "Media/Loading/" + objName + "/" + animName + "/";
+	const std::string SPRITESHEET_PATH = "Media/Spritesheets/" + objName + "/" + animName + "/";
 	for (const auto& entry : std::filesystem::directory_iterator(SPRITESHEET_PATH)) {
 		String path = entry.path().generic_string();
 		std::vector<String> tokens = StringUtils::split(path, '/');

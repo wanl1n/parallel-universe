@@ -1,6 +1,7 @@
 #pragma once
 #include "Comeowser.h"
 #include "NoteObject.h"
+#include "Pot.h"
 #include "Screen.h"
 
 class LoadingScreen : public Screen
@@ -11,14 +12,23 @@ public:
 	LoadingScreen();
 	~LoadingScreen();
 
+	void initializeDisplay() override;
+
+	void loadRhythmGame();
+	void loadMeowno();
+	void loadZenGarden();
+
 	void update(float deltaTime) override;
 	void processInput() override;
+	void onFinishedExecution() override;
 
 private:
+	// meowno
+	AnimatedObject* catPiano;
+
+	// rhythm game
 	const float MIN_THRESHOLD = 1400.0f;
 	const float MAX_THRESHOLD = 1700.0f;
-
-	AnimatedObject* catPiano;
 	Comeowser* bongoCat;
 	NotesList notes;
 	float timeStamps[10] = { 3.912f, 6.648f, 9.384f,
@@ -34,7 +44,10 @@ private:
 
 	std::string result = "";
 	int score = 0;
-
 	int inputFrames = 0;
+
+	// zen garden
+	SpriteObject* wateringCan;
+	std::vector<Pot*> pots;
 };
 

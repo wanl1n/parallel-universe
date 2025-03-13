@@ -27,16 +27,11 @@ BaseRunner::BaseRunner() :
 	this->initializeObjects();
 
 	ScreenManager::getInstance()->initialize();
-}
+} 
 
 void BaseRunner::initializeObjects()
 {
 	//load objects
-	BGObject* bgObject = new BGObject("BGObject");
-	GameObjectManager::getInstance()->addObject(bgObject);
-
-	FPSCounter* fpsCounter = new FPSCounter();
-	GameObjectManager::getInstance()->addObject(fpsCounter);
 }
 
 void BaseRunner::run() {
@@ -60,8 +55,6 @@ void BaseRunner::run() {
 
 void BaseRunner::processEvents()
 {
-	ScreenManager::getInstance()->processInput();
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 	{
 		this->window.close();
@@ -76,6 +69,7 @@ void BaseRunner::processEvents()
 			GameObjectManager::getInstance()->processInput(event.value());
 		}
 	}
+	ScreenManager::getInstance()->processInput();
 }
 
 void BaseRunner::update(sf::Time elapsedTime) {

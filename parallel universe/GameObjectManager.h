@@ -8,6 +8,8 @@
 #include "AGameObject.h"
 #include <SFML/Graphics.hpp>
 
+#include "FPSCounter.h"
+
 typedef std::unordered_map<std::string, AGameObject*> HashTable;
 typedef std::vector<AGameObject*> List;
 
@@ -31,6 +33,7 @@ class GameObjectManager
 		GameObjectManager& operator=(GameObjectManager const&) {};  // assignment operator is private
 		static GameObjectManager* sharedInstance;
 
+		//GameObjectManager::getInstance()->addObject(fpsCounter);
 		HashTable gameObjectMap;
 		List gameObjectList;
 };

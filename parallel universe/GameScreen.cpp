@@ -9,22 +9,24 @@
 
 GameScreen::GameScreen() : Screen(game)
 {
-	objectList.push_back("TextureDisplay");
 }
 
 GameScreen::~GameScreen() {}
 
 void GameScreen::initializeDisplay()
 {
-	display = new TextureDisplay();
+	/*display = new TextureDisplay();
 	GameObjectManager::getInstance()->addObject(display);
 	display->setActive(false);
+	objectList.push_back("TextureDisplay");*/
+
+	Screen::initializeDisplay();
 }
 
 void GameScreen::processInput()
 {
 	Screen::processInput();
-	this->load = this->display->isLoading();
+	//this->load = this->display->isLoading();
 
 	if (!AudioManager::getInstance()->isPlayingBGM())
 		AudioManager::getInstance()->playBGM(Screen::ScreenName::game);
@@ -32,5 +34,4 @@ void GameScreen::processInput()
 
 void GameScreen::onFinishedExecution()
 {
-	ScreenManager::getInstance()->loadScreen(game);
 }

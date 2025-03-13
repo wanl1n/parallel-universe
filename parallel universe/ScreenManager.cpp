@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "TitleScreen.h"
 #include "Threading/SceneLoader.h"
 
 //a singleton class
@@ -21,13 +22,20 @@ void ScreenManager::initialize()
 	this->threadPool = new ThreadPool("Texture Manager Thread Pool", 1);
 	this->threadPool->startScheduler();
 
-	this->screenMap[Screen::ScreenName::loading] = new LoadingScreen();
+	TitleScreen* ts = new TitleScreen();
+	this->screenMap[Screen::ScreenName::main] = ts;
+
+	LoadingScreen* ls = new LoadingScreen();
+	this->screenMap[Screen::ScreenName::loading] = ls;
+	SceneLoader* loadingLoader = new SceneLoader(Screen::loading, ls);
+	this->threadPool->scheduleTask(loadingLoader);
+
 	GameScreen* gs = new GameScreen();
 	this->screenMap[Screen::ScreenName::game] = gs;
-	SceneLoader* loader = new SceneLoader(Screen::game, gs);
-	this->threadPool->scheduleTask(loader);
+	SceneLoader* gameLoader = new SceneLoader(Screen::game, gs);
+	this->threadPool->scheduleTask(gameLoader);
 
-	this->currentScreen = this->screenMap[Screen::ScreenName::loading];
+	this->currentScreen = this->screenMap[Screen::ScreenName::main];
 }
 
 void ScreenManager::addScreen(Screen::ScreenName screenName, Screen* screen)
@@ -54,6 +62,10 @@ void ScreenManager::processInput()
 void ScreenManager::update(float deltaTime)
 {
 	this->currentScreen->update(deltaTime);
+
+	if (currentScreen == this->screenMap[Screen::ScreenName::loading] && 
+		!this->screenMap[Screen::ScreenName::game]->isLoading())
+		ScreenManager::getInstance()->loadScreen(Screen::game);
 }
 
 ScreenManager::ScreenManager()

@@ -149,6 +149,8 @@
     <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="LoadingText.cpp" />
     <ClCompile Include="NoteObject.cpp" />
+    <ClCompile Include="Plant.cpp" />
+    <ClCompile Include="Pot.cpp" />
     <ClCompile Include="Threading\SceneLoader.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
@@ -169,6 +171,7 @@
     <ClCompile Include="Threading\IExecutionEvent.cpp" />
     <ClCompile Include="Threading\StreamAssetLoader.cpp" />
     <ClCompile Include="Threading\ThreadPool.cpp" />
+    <ClCompile Include="TitleScreen.cpp" />
     <ClCompile Include="UserInput.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +185,8 @@
     <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="LoadingText.h" />
     <ClInclude Include="NoteObject.h" />
+    <ClInclude Include="Plant.h" />
+    <ClInclude Include="Pot.h" />
     <ClInclude Include="Threading\SceneLoader.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenManager.h" />
@@ -202,6 +207,7 @@
     <ClInclude Include="Threading\IWorkerAction.h" />
     <ClInclude Include="Threading\StreamAssetLoader.h" />
     <ClInclude Include="Threading\ThreadPool.h" />
+    <ClInclude Include="TitleScreen.h" />
     <ClInclude Include="UserInput.h" />
   </ItemGroup>
   <ItemGroup>

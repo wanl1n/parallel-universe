@@ -4,6 +4,7 @@
 #include "BaseRunner.h"
 #include "GameObjectManager.h"
 #include "IconObject.h"
+#include "ScreenManager.h"
 
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
@@ -19,13 +20,13 @@ void TextureDisplay::initialize()
 		this->numDisplayed++;
 	}
 
-	while (this->iconList.size() < maxAssetCount)
+	do
 	{
-		std::cout << "Textures created: " << this->iconList.size() << std::endl;
 		this->loadingAssets = true;
-	}
-	this->loadingAssets = false;
-	std::cout << "Texture Display initialized" << std::endl;
+	} while (this->iconList.size() < maxAssetCount);
+
+	//this->loadingAssets = false;
+	std::cout << "Texture Display initialized: " << iconList.size() << " out of " << maxAssetCount << std::endl;
 }
 
 void TextureDisplay::processInput(sf::Event event)

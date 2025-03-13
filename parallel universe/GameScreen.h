@@ -7,7 +7,7 @@ class GameScreen : public Screen
 public:
 	GameScreen();
 	~GameScreen();
-	void initializeDisplay();
+	void initializeDisplay() override;
 
 	void processInput() override;
 	void onFinishedExecution() override;

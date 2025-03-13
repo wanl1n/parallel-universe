@@ -10,7 +10,7 @@ class IExecutionEvent;
 class SceneLoader : public IWorkerAction
 {
 public:
-	SceneLoader(Screen::ScreenName name, GameScreen* screen);
+	SceneLoader(Screen::ScreenName name, Screen* screen);
 	~SceneLoader();
 
 private:
@@ -18,5 +18,5 @@ private:
 
 	Screen::ScreenName name;
 	IExecutionEvent* execEvent;
-	GameScreen* screen;
+	Screen* screen;
 };

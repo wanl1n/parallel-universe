@@ -12,14 +12,15 @@ void BGObject::initialize()
 	std::cout << "Declared as " << this->getName() << "\n";
 
 	//assign texture
-	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("BG", 0);
+	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap(name, 0);
 	this->sprite = new sf::Sprite(*texture);
-	texture->setRepeated(true);
+	//texture->setRepeated(true);
 	this->sprite->setTexture(*texture);
-	sf::Vector2u textureSize = this->sprite->getTexture().getSize();
+	this->sprite->setScale(sf::Vector2f(5, 5));
+	//sf::Vector2u textureSize = this->sprite->getTexture().getSize();
 	//make BG height x k to emulate repeating BG.
-	this->sprite->setTextureRect(sf::IntRect({ 0,0 }, { BaseRunner::WINDOW_WIDTH, BaseRunner::WINDOW_HEIGHT * 8 }));
-	this->setPosition(0, -BaseRunner::WINDOW_HEIGHT * 7);
+	//this->sprite->setTextureRect(sf::IntRect({ 0,0 }, { BaseRunner::WINDOW_WIDTH, BaseRunner::WINDOW_HEIGHT * 8 }));
+	//this->setPosition(0, -BaseRunner::WINDOW_HEIGHT * 7);
 }
 
 void BGObject::processInput(sf::Event event)
@@ -28,17 +29,17 @@ void BGObject::processInput(sf::Event event)
 
 void BGObject::update(sf::Time deltaTime)
 {
-	//make BG scroll slowly
-	sf::Vector2f position = this->getPosition();
-	position.y += this->SPEED_MULTIPLIER * deltaTime.asSeconds();
-	this->setPosition(position.x, position.y);
+	////make BG scroll slowly
+	//sf::Vector2f position = this->getPosition();
+	//position.y += this->SPEED_MULTIPLIER * deltaTime.asSeconds();
+	//this->setPosition(position.x, position.y);
 
-	sf::Vector2f localPos = this->sprite->getPosition();
-	if (localPos.y * deltaTime.asSeconds() > 0) {
-		//reset position
-		this->setPosition(0, -BaseRunner::WINDOW_HEIGHT * 7);
-	}
-	else {
-		
-	}
+	//sf::Vector2f localPos = this->sprite->getPosition();
+	//if (localPos.y * deltaTime.asSeconds() > 0) {
+	//	//reset position
+	//	this->setPosition(0, -BaseRunner::WINDOW_HEIGHT * 7);
+	//}
+	//else {
+	//	
+	//}
 }

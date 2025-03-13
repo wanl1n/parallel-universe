@@ -12,6 +12,14 @@ Screen::~Screen()
 {
 }
 
+void Screen::initializeDisplay()
+{
+	FPSCounter* fpsCounter = new FPSCounter();
+	GameObjectManager::getInstance()->addObject(fpsCounter);
+
+	objectList.push_back(fpsCounter->getName());
+}
+
 void Screen::update(float deltaTime)
 {
 }

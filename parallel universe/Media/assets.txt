@@ -1,2 +1,9 @@
 Media/Textures/BG.png
+Media/Textures/Main Menu BG.png
+Media/Textures/watering can.png
+Media/Textures/need water.png
 Media/Textures/Keyboard.png
+Media/PvZ/zen garden.jpg
+Media/PvZ/pot.png
+Media/PvZ/pot_watered.png
+Media/PvZ/coin.png

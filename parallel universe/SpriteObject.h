@@ -4,11 +4,14 @@
 class SpriteObject : public AGameObject
 {
 public:
-	SpriteObject(String name);
+	SpriteObject(String name, String objName);
 	void initialize();
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
 
 	sf::Sprite* getSprite();
+
+private:
+	String objName;
 };
 
