@@ -89,21 +89,23 @@ void LoadingScreen::loadZenGarden()
 	bgObject->setPosition(0, -150);
 	bgObject->setActive(false);
 	objectList.push_back("zen garden");
+	objects.push_back(bgObject);
 
 	int index = 0;
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			float x = (50 - j * 30) + (200 + j * 10) * i;
-			float y = -120 + 230 * j;
+			float x = (150 - j * 30) + (200 + j * 10) * i;
+			float y = 50 + 230 * j;
 			std::string name = "pot" + std::to_string(index);
 			Pot* pot = new Pot(name);
 			GameObjectManager::getInstance()->addObject(pot);
+			pot->setActive(false);
 			pot->setScale(1.8f, 1.8f);
 			pot->setPosition(x, y);
-			pot->setActive(false);
 			objectList.push_back(name);
+			objects.push_back(pot);
 			pots.push_back(pot);
 
 			index++;
@@ -113,21 +115,23 @@ void LoadingScreen::loadZenGarden()
 				std::string plantName = "cattail" + std::to_string(index);
 				Plant* plant = new Plant(plantName, "cattail", pot);
 				GameObjectManager::getInstance()->addObject(plant);
+				plant->setActive(false);
 				plant->setScale(1.8f, 1.8f);
 				plant->setPosition(x, y);
 				plant->setInitPos(x, y);
-				plant->setActive(false);
 				objectList.push_back(plantName);
+				objects.push_back(plant);
 			} else
 			{
 				std::string plantName = "star" + std::to_string(index);
 				Plant* plant = new Plant(plantName, "star", pot);
 				GameObjectManager::getInstance()->addObject(plant);
+				plant->setActive(false);
 				plant->setScale(1.8f, 1.8f);
 				plant->setPosition(x, y);
 				plant->setInitPos(x, y);
-				plant->setActive(false);
 				objectList.push_back(plantName);
+				objects.push_back(plant);
 			}
 		}
 	}
@@ -138,18 +142,29 @@ void LoadingScreen::loadZenGarden()
 	coin->setPosition(BaseRunner::WINDOW_WIDTH/2 - 100, 100);
 	coin->setScale(0.4f, 0.4f);
 	objectList.push_back(coin->getName());
+	objects.push_back(coin);
 
 	// score text
 	LoadingText* statsObj = new LoadingText(&this->score, &this->result);
 	GameObjectManager::getInstance()->addObject(statsObj);
 	statsObj->setActive(false);
 	objectList.push_back(statsObj->getName());
+	objects.push_back(statsObj);
 
 	this->wateringCan = new SpriteObject("watering can","watering can");
 	GameObjectManager::getInstance()->addObject(wateringCan);
 	wateringCan->setActive(false);
 	wateringCan->setPosition(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y);
 	objectList.push_back(wateringCan->getName());
+	objects.push_back(wateringCan);
+}
+
+void LoadingScreen::unloadScreen()
+{
+	Screen::unloadScreen();
+
+	/*for (AGameObject* go : objects)
+		delete go;*/
 }
 
 void LoadingScreen::update(float deltaTime)
@@ -162,6 +177,14 @@ void LoadingScreen::update(float deltaTime)
 	score = 0;
 	for (Pot* pot : pots)
 		score += pot->getScore();
+
+	/*float loadingProgress = ScreenManager::getInstance()->loadingProgress() * 100;
+	std::string res = std::to_string(loadingProgress);
+	this->result = res;*/
+
+	if (!ScreenManager::getInstance()->loadingProgress())
+		ScreenManager::getInstance()->loadScreen(Screen::game);
+
 	//if (this->ticks > this->timeStamps[nextNoteIndex] - timeOffset && nextNoteIndex < notesCount)
 	//{
 	//	this->notes[nextNoteIndex]->startMoving(deltaTime);

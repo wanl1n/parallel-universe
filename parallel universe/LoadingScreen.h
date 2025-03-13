@@ -18,11 +18,14 @@ public:
 	void loadMeowno();
 	void loadZenGarden();
 
+	void unloadScreen() override;
 	void update(float deltaTime) override;
 	void processInput() override;
 	void onFinishedExecution() override;
 
 private:
+	std::vector<AGameObject*> objects;
+
 	// meowno
 	AnimatedObject* catPiano;
 

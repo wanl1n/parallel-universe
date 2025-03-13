@@ -60,6 +60,7 @@ void GameObjectManager::draw(sf::RenderWindow* window) {
 
 void GameObjectManager::addObject(AGameObject* gameObject)
 {
+	gameObject->setActive(false);
 	//also initialize the oject
 	this->gameObjectMap[gameObject->getName()] = gameObject;
 	this->gameObjectList.push_back(gameObject);

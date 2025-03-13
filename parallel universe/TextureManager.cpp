@@ -66,22 +66,11 @@ void TextureManager::loadStreamingAssets()
 	}
 }
 
-void TextureManager::loadStreamingAssets(int index, int batchSize, IExecutionEvent* executionEvent)
+void TextureManager::loadStreamingAssets(IExecutionEvent* executionEvent)
 {
-	int fileNum = 0;
-	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
-		if (fileNum >= index && fileNum < index+batchSize)
-		{
-			String path = entry.path().generic_string();
-
-			// Create a thread.
-			StreamAssetLoader* assetLoader = new StreamAssetLoader(path, executionEvent);
-			this->threadPool->scheduleTask(assetLoader);
-
-			//std::cout << "[TextureManager] Loaded batch streaming texture: " << fileNum << std::endl;
-		}
-		fileNum++;
-	}
+	// Create a thread.
+	StreamAssetLoader* assetLoader = new StreamAssetLoader(STREAMING_PATH, executionEvent);
+	this->threadPool->scheduleTask(assetLoader);
 }
 
 void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* executionEvent)

@@ -51,15 +51,15 @@ sf::Sound* AudioManager::getFromAudioPack(const String assetName, int clipIndex)
 
 void AudioManager::playBGM(Screen::ScreenName screenName)
 {
+	if (bgmToPlay) bgmToPlay->stop();
 	if (screenName == Screen::game)
-		bgmToPlay = new sf::Music(AUDIO_PATH + "A Cruel Neko's Nyasis.mp3"); // Throws sf::Exception if an error occurs
+		bgmToPlay = new sf::Music(AUDIO_PATH + "There's a Zombie on Your Lawn.mp3"); // Throws sf::Exception if an error occurs
 	else
 	{
 		bgmToPlay = new sf::Music(AUDIO_PATH + "Zen Garden.mp3"); // Throws sf::Exception if an error occurs
-		bgmToPlay->setVolume(2.0f);
 	}
 
-	bgmToPlay->setVolume(1.0f);
+	bgmToPlay->setVolume(100.0f);
 	bgmToPlay->setLooping(true);
 	bgmToPlay->play();
 }

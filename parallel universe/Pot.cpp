@@ -43,7 +43,6 @@ void Pot::water()
 {
 	if (dry)
 	{
-		std::cout << "water plant" << std::endl;
 		this->ticks = 0;
 		this->dry = false;
 		this->sprite->setTexture(*watered);

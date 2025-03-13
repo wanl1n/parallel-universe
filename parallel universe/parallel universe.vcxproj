@@ -145,6 +145,7 @@
     <ClCompile Include="BaseRunner.cpp" />
     <ClCompile Include="BGObject.cpp" />
     <ClCompile Include="Comeowser.cpp" />
+    <ClCompile Include="Cutscene.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="LoadingText.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="BaseRunner.h" />
     <ClInclude Include="BGObject.h" />
     <ClInclude Include="Comeowser.h" />
+    <ClInclude Include="Cutscene.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="LoadingText.h" />

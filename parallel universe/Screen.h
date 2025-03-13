@@ -20,6 +20,7 @@ public:
 	virtual void loadScreen();
 	virtual void unloadScreen();
 	void onFinishedExecution() override;
+	virtual bool loadingProgress() { return false; }
 
 	ScreenName getName() { return name; }
 	bool isLoading() { return load; }

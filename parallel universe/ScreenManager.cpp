@@ -27,8 +27,7 @@ void ScreenManager::initialize()
 
 	LoadingScreen* ls = new LoadingScreen();
 	this->screenMap[Screen::ScreenName::loading] = ls;
-	SceneLoader* loadingLoader = new SceneLoader(Screen::loading, ls);
-	this->threadPool->scheduleTask(loadingLoader);
+	ls->initializeDisplay();
 
 	GameScreen* gs = new GameScreen();
 	this->screenMap[Screen::ScreenName::game] = gs;
@@ -66,6 +65,15 @@ void ScreenManager::update(float deltaTime)
 	if (currentScreen == this->screenMap[Screen::ScreenName::loading] && 
 		!this->screenMap[Screen::ScreenName::game]->isLoading())
 		ScreenManager::getInstance()->loadScreen(Screen::game);
+}
+
+bool ScreenManager::loadingProgress()
+{
+	//std::cout << "Screen Manager loading progress " << this->screenMap[Screen::game]->loadingProgress() << std::endl;
+	if (this->screenMap[Screen::game] != nullptr)
+		return this->screenMap[Screen::game]->loadingProgress();
+	else
+		return 0;
 }
 
 ScreenManager::ScreenManager()

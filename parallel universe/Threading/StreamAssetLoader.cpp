@@ -21,17 +21,18 @@ StreamAssetLoader::~StreamAssetLoader()
 void StreamAssetLoader::onStartTask()
 {
 	//std::cout << "Running stream asset loader " << std::endl;
-	//simulate loading of very large file
-	std::random_device seeder;
-	std::mt19937 engine(seeder());
-	std::uniform_int_distribution<int> dist(1000, 4000);
-	IETThread::sleep(dist(engine));
+	////simulate loading of very large file
+	//std::random_device seeder;
+	//std::mt19937 engine(seeder());
+	//std::uniform_int_distribution<int> dist(1000, 4000);
+	//IETThread::sleep(dist(engine));
 
-	std::vector<String> tokens = StringUtils::split(path, '/');
-	String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
-	TextureManager::getInstance()->instantiateAsTexture(path, assetName, true);
-
-	//std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
+	for (const auto& entry : std::filesystem::directory_iterator(path)) {
+		String path = entry.path().generic_string();
+		std::vector<String> tokens = StringUtils::split(path, '/');
+		String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
+		TextureManager::getInstance()->instantiateAsTexture(path, assetName, true);
+	}
 
 	this->execEvent->onFinishedExecution();
 

@@ -43,6 +43,7 @@ void Screen::unloadScreen()
 	{
 		AGameObject* gameObject = GameObjectManager::getInstance()->findObjectByName(objectName);
 		gameObject->setActive(false);
+		//delete gameObject;
 	}
 }
 

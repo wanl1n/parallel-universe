@@ -18,6 +18,8 @@ public:
 	void processInput();
 	void update(float deltaTime);
 
+	bool loadingProgress();
+
 private:
 	ScreenManager();
 	ScreenManager(ScreenManager const&) {};             // copy constructor is private

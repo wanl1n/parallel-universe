@@ -43,9 +43,9 @@ void LoadingText::update(sf::Time deltaTime)
 {
 	this->updateScore();
 
-	if (!this->result->empty()) timer += deltaTime.asSeconds();
+	/*if (!this->result->empty()) timer += deltaTime.asSeconds();
 	if (this->result->empty()) timer = 0;
-	if (timer > 1.0f) *this->result = " ";
+	if (timer > 1.0f) *this->result = " ";*/
 }
 
 void LoadingText::draw(sf::RenderWindow* targetWindow)
@@ -62,6 +62,6 @@ void LoadingText::draw(sf::RenderWindow* targetWindow)
 void LoadingText::updateScore()
 {
 	sf::String fpsString = std::to_string(*this->score);
-	this->statsText->setString(fpsString);
-	this->resultText->setString(*result);
+   	this->statsText->setString(fpsString);
+	//this->resultText->setString(*result);
 }

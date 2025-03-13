@@ -135,6 +135,9 @@
     <ClCompile Include="Pot.cpp">
       <Filter>GameObject\LoadingScreen</Filter>
     </ClCompile>
+    <ClCompile Include="Cutscene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseRunner.h">
@@ -238,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="Pot.h">
       <Filter>GameObject\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Cutscene.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

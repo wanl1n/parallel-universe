@@ -10,6 +10,7 @@ TitleScreen::TitleScreen() : Screen(ScreenName::main)
 	BGObject* mainmenuBG = new BGObject("Main Menu BG");
 	GameObjectManager::getInstance()->addObject(mainmenuBG);
 	objectList.push_back("Main Menu BG");
+	mainmenuBG->setActive(true);
 	//AudioManager::getInstance()->playBGM(Screen::main);
 }
 

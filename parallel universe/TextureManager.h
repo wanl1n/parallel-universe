@@ -18,7 +18,7 @@ public:
 	void loadFromAssetList(); //loading of all assets needed for startup
 	void loadSpriteSheets(std::string objName, std::string animName); //loading spritesheets for the loadingscreen
 	void loadStreamingAssets();
-	void loadStreamingAssets(int index, int batchSize, IExecutionEvent* executionEvent);
+	void loadStreamingAssets(IExecutionEvent* executionEvent);
 	void loadSingleStreamAsset(int index, IExecutionEvent* executionEvent); //loads a single streaming asset based on index in directory
 	sf::Texture* getFromTextureMap(const String assetName, int frameIndex);
 	int getNumFrames(const String assetName);
