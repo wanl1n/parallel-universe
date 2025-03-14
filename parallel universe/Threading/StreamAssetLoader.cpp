@@ -21,6 +21,8 @@ StreamAssetLoader::~StreamAssetLoader()
 void StreamAssetLoader::onStartTask()
 {
 	for (const auto& entry : std::filesystem::directory_iterator(path)) {
+		IETThread::sleep(18); // Add a bit of loading delay.
+
 		String path = entry.path().generic_string();
 		std::vector<String> tokens = StringUtils::split(path, '/');
 		String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
