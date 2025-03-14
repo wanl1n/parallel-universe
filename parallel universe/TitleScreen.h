@@ -4,7 +4,7 @@
 class TitleScreen : public Screen
 {
 public:
-	TitleScreen();
+	TitleScreen(int* score);
 	~TitleScreen();
 	void initializeDisplay() override { Screen::initializeDisplay(); }
 

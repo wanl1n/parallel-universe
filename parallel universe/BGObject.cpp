@@ -9,7 +9,7 @@ BGObject::BGObject(string name) : AGameObject(name)
 
 void BGObject::initialize()
 {
-	std::cout << "Declared as " << this->getName() << "\n";
+	//std::cout << "Declared as " << this->getName() << "\n";
 
 	//assign texture
 	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap(name, 0);

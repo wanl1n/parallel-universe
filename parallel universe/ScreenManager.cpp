@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "BaseRunner.h"
 #include "TitleScreen.h"
 #include "Threading/SceneLoader.h"
 
@@ -19,17 +20,17 @@ ScreenManager* ScreenManager::getInstance() {
 
 void ScreenManager::initialize()
 {
-	this->threadPool = new ThreadPool("Texture Manager Thread Pool", 1);
+	this->threadPool = new ThreadPool("Screen Manager Thread Pool", 1);
 	this->threadPool->startScheduler();
 
-	TitleScreen* ts = new TitleScreen();
+	TitleScreen* ts = new TitleScreen(&BaseRunner::getInstance()->money);
 	this->screenMap[Screen::ScreenName::main] = ts;
 
-	LoadingScreen* ls = new LoadingScreen();
+	LoadingScreen* ls = new LoadingScreen(&BaseRunner::getInstance()->money);
 	this->screenMap[Screen::ScreenName::loading] = ls;
 	ls->initializeDisplay();
 
-	GameScreen* gs = new GameScreen();
+	GameScreen* gs = new GameScreen(&BaseRunner::getInstance()->money);
 	this->screenMap[Screen::ScreenName::game] = gs;
 	SceneLoader* gameLoader = new SceneLoader(Screen::game, gs);
 	this->threadPool->scheduleTask(gameLoader);

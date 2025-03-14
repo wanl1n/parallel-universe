@@ -1,22 +1,18 @@
 #pragma once
-#include <iostream>
-
 #include "Cutscene.h"
 #include "Screen.h"
-#include "TextureDisplay.h"
 
 class GameScreen : public Screen
 {
 public:
-	GameScreen();
+	GameScreen(int* score);
 	~GameScreen();
 	void initializeDisplay() override;
-
-	void loadScreen() override;
 
 	void update(float deltaTime) override;
 	void processInput() override;
 	void onFinishedExecution() override;
+
 	bool loadingProgress()
 	{
 		//if (this->cs != nullptr)std::cout << "Game screen loading progress " << this->cs->loadingProgress() << std::endl;

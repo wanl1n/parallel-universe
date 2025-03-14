@@ -11,6 +11,7 @@ public:
 	static const sf::Time TIME_PER_FRAME;
 	static const int WINDOW_WIDTH = 1920;
 	static const int WINDOW_HEIGHT = 1080;
+	int money = 0;
 
 	static BaseRunner* getInstance();
 	static BaseRunner* sharedInstance;

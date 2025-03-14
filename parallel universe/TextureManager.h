@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <mutex>
 
+#include "Cutscene.h"
 #include "Threading/IExecutionEvent.h"
 #include "SFML/Graphics.hpp"
 #include "Threading/ThreadPool.h"
@@ -26,6 +27,7 @@ public:
 	sf::Texture* getStreamTextureFromList(const int index);
 	int getNumLoadedStreamTextures() const;
 	void instantiateAsTexture(String path, String assetName, bool isStreaming);
+	int getTotalStreamingAssets() { return this->streamingAssetCount; }
 
 private:
 	TextureManager();

@@ -144,12 +144,11 @@
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BaseRunner.cpp" />
     <ClCompile Include="BGObject.cpp" />
-    <ClCompile Include="Comeowser.cpp" />
     <ClCompile Include="Cutscene.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="LoadingText.cpp" />
-    <ClCompile Include="NoteObject.cpp" />
+    <ClCompile Include="MoneyCounter.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="Pot.cpp" />
     <ClCompile Include="Threading\SceneLoader.cpp" />
@@ -160,12 +159,10 @@
     <ClCompile Include="Threading\BusyWaitSemaphore.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
-    <ClCompile Include="IconObject.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Threading\PoolWorkerThread.cpp" />
     <ClCompile Include="StringUtils.cpp" />
-    <ClCompile Include="TextureDisplay.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Threading\HelloWorldThread.cpp" />
     <ClCompile Include="Threading\IETThread.cpp" />
@@ -173,7 +170,6 @@
     <ClCompile Include="Threading\StreamAssetLoader.cpp" />
     <ClCompile Include="Threading\ThreadPool.cpp" />
     <ClCompile Include="TitleScreen.cpp" />
-    <ClCompile Include="UserInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AGameObject.h" />
@@ -181,12 +177,11 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BaseRunner.h" />
     <ClInclude Include="BGObject.h" />
-    <ClInclude Include="Comeowser.h" />
     <ClInclude Include="Cutscene.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="LoadingText.h" />
-    <ClInclude Include="NoteObject.h" />
+    <ClInclude Include="MoneyCounter.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="Pot.h" />
     <ClInclude Include="Threading\SceneLoader.h" />
@@ -197,11 +192,9 @@
     <ClInclude Include="Threading\BusyWaitSemaphore.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="GameObjectManager.h" />
-    <ClInclude Include="IconObject.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Threading\PoolWorkerThread.h" />
     <ClInclude Include="StringUtils.h" />
-    <ClInclude Include="TextureDisplay.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Threading\HelloWorldThread.h" />
     <ClInclude Include="Threading\IETThread.h" />
@@ -210,7 +203,6 @@
     <ClInclude Include="Threading\StreamAssetLoader.h" />
     <ClInclude Include="Threading\ThreadPool.h" />
     <ClInclude Include="TitleScreen.h" />
-    <ClInclude Include="UserInput.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sfml-audio-3.dll" />

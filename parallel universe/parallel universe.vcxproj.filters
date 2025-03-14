@@ -48,9 +48,6 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UserInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
@@ -111,23 +108,11 @@
     <ClCompile Include="LoadingText.cpp">
       <Filter>GameObject\LoadingScreen</Filter>
     </ClCompile>
-    <ClCompile Include="NoteObject.cpp">
-      <Filter>GameObject\LoadingScreen</Filter>
-    </ClCompile>
     <ClCompile Include="AnimatedObject.cpp">
       <Filter>GameObject\LoadingScreen</Filter>
     </ClCompile>
     <ClCompile Include="TitleScreen.cpp">
       <Filter>Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="IconObject.cpp">
-      <Filter>GameObject\GameScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureDisplay.cpp">
-      <Filter>GameObject\GameScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="Comeowser.cpp">
-      <Filter>GameObject\LoadingScreen</Filter>
     </ClCompile>
     <ClCompile Include="Plant.cpp">
       <Filter>GameObject\LoadingScreen</Filter>
@@ -136,6 +121,9 @@
       <Filter>GameObject\LoadingScreen</Filter>
     </ClCompile>
     <ClCompile Include="Cutscene.cpp">
+      <Filter>GameObject\GameScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyCounter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,9 +140,6 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameScreen.h">
       <Filter>Screens</Filter>
     </ClInclude>
@@ -168,9 +153,6 @@
       <Filter>Screens</Filter>
     </ClInclude>
     <ClInclude Include="AudioManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Threading\SceneLoader.h">
@@ -218,23 +200,11 @@
     <ClInclude Include="LoadingText.h">
       <Filter>GameObject\LoadingScreen</Filter>
     </ClInclude>
-    <ClInclude Include="NoteObject.h">
-      <Filter>GameObject\LoadingScreen</Filter>
-    </ClInclude>
     <ClInclude Include="AnimatedObject.h">
       <Filter>GameObject\LoadingScreen</Filter>
     </ClInclude>
     <ClInclude Include="TitleScreen.h">
       <Filter>Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="IconObject.h">
-      <Filter>GameObject\GameScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureDisplay.h">
-      <Filter>GameObject\GameScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="Comeowser.h">
-      <Filter>GameObject\LoadingScreen</Filter>
     </ClInclude>
     <ClInclude Include="Plant.h">
       <Filter>GameObject\LoadingScreen</Filter>
@@ -243,6 +213,12 @@
       <Filter>GameObject\LoadingScreen</Filter>
     </ClInclude>
     <ClInclude Include="Cutscene.h">
+      <Filter>GameObject\GameScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

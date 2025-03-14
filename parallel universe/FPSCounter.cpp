@@ -15,13 +15,14 @@ FPSCounter::~FPSCounter()
 void FPSCounter::initialize()
 {
 	sf::Font* font = new sf::Font();
-	font->openFromFile("Media/Bellefair.otf");
+	font->openFromFile("Media/SeriesOrbit.TTF");
 
 	this->statsText = new sf::Text(*font);
 	this->statsText->setFont(*font);
 	this->statsText->setPosition(sf::Vector2f(BaseRunner::WINDOW_WIDTH - 150, BaseRunner::WINDOW_HEIGHT - 70));
-	this->statsText->setOutlineColor(sf::Color(1.0f, 1.0f, 1.0f));
-	this->statsText->setOutlineThickness(2.0f);
+	this->statsText->setFillColor(sf::Color(255, 255, 255));
+	//this->statsText->setOutlineColor(sf::Color(1.0f, 1.0f, 1.0f));
+	this->statsText->setOutlineThickness(4.0f);
 	this->statsText->setCharacterSize(35);
 }
 

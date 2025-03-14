@@ -19,7 +19,7 @@ AGameObject* GameObjectManager::findObjectByName(AGameObject::String name)
 		return this->gameObjectMap[name];
 	}
 	else {
-		std::cout << "Object " << name << " not found!";
+		//std::cout << "Object " << name << " not found!";
 		return NULL;
 	}
 }

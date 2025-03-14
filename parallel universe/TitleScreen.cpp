@@ -5,7 +5,7 @@
 #include "GameObjectManager.h"
 #include "ScreenManager.h"
 
-TitleScreen::TitleScreen() : Screen(ScreenName::main)
+TitleScreen::TitleScreen(int* score) : Screen(ScreenName::main, score)
 {
 	BGObject* mainmenuBG = new BGObject("Main Menu BG");
 	GameObjectManager::getInstance()->addObject(mainmenuBG);

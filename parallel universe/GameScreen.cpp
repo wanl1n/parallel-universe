@@ -1,15 +1,12 @@
 #include "GameScreen.h"
 
-#include <iostream>
-
 #include "AudioManager.h"
 #include "BaseRunner.h"
 #include "Cutscene.h"
 #include "GameObjectManager.h"
 #include "ScreenManager.h"
-#include "Threading/SceneLoader.h"
 
-GameScreen::GameScreen() : Screen(game)
+GameScreen::GameScreen(int* score) : Screen(game, score)
 {
 }
 
@@ -22,17 +19,8 @@ void GameScreen::initializeDisplay()
 	cs->setActive(false);
 	objectList.push_back(cs->getName());
 	cs->setScale(2.f, 2.f);
-	/*display = new TextureDisplay();
-	GameObjectManager::getInstance()->addObject(display);
-	display->setActive(false);
-	objectList.push_back("TextureDisplay");*/
 
 	Screen::initializeDisplay();
-}
-
-void GameScreen::loadScreen()
-{
-	Screen::loadScreen();
 }
 
 void GameScreen::update(float deltaTime)

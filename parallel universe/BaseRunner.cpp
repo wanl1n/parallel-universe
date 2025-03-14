@@ -1,9 +1,6 @@
 #include "BaseRunner.h"
 #include "GameObjectManager.h"
-#include "BGObject.h"
 #include "TextureManager.h"
-#include "TextureDisplay.h"
-#include "FPSCounter.h"
 #include "ScreenManager.h"
 
 /// <summary>

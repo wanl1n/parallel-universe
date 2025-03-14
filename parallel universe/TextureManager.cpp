@@ -3,7 +3,6 @@
 #include <filesystem>
 #include "TextureManager.h"
 #include "StringUtils.h"
-#include "Threading/IETThread.h"
 #include "Threading/StreamAssetLoader.h"
 #include "Threading/IExecutionEvent.h"
 
@@ -28,7 +27,7 @@ TextureManager::TextureManager()
 
 void TextureManager::loadFromAssetList()
 {
-	std::cout << "[TextureManager] Reading from asset list" << std::endl;
+	//std::cout << "[TextureManager] Reading from asset list" << std::endl;
 	std::ifstream stream("Media/assets.txt");
 	String path;
 
@@ -37,7 +36,7 @@ void TextureManager::loadFromAssetList()
 		std::vector<String> tokens = StringUtils::split(path, '/');
 		String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
 		this->instantiateAsTexture(path, assetName, false);
-		std::cout << "[TextureManager] Loaded texture: " << assetName << std::endl;
+		//std::cout << "[TextureManager] Loaded texture: " << assetName << std::endl;
 	}
 }
 
@@ -49,18 +48,6 @@ void TextureManager::loadSpriteSheets(std::string objName, std::string animName)
 		std::vector<String> tokens = StringUtils::split(path, '/');
 		String assetName = objName + " " + animName;
 		this->instantiateAsTexture(path, assetName, false);
-
-		//std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
-	}
-}
-
-void TextureManager::loadStreamingAssets()
-{
-	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
-		String path = entry.path().generic_string();
-		std::vector<String> tokens = StringUtils::split(path, '/');
-		String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
-		this->instantiateAsTexture(path, assetName, true);
 
 		//std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
 	}
@@ -137,6 +124,7 @@ void TextureManager::countStreamingAssets()
 
 void TextureManager::instantiateAsTexture(String path, String assetName, bool isStreaming)
 {
+	guard.lock();
 	sf::Texture* texture = new sf::Texture();
 	texture->loadFromFile(path);
 	this->textureMap[assetName].push_back(texture);
@@ -149,4 +137,5 @@ void TextureManager::instantiateAsTexture(String path, String assetName, bool is
 	{
 		this->baseTextureList.push_back(texture);
 	}
+	guard.unlock();
 }

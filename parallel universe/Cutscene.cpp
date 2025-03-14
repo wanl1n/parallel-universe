@@ -7,11 +7,13 @@
 Cutscene::Cutscene(std::string name)
     : AGameObject(name)
 {
+    this->totalFrames = TextureManager::getInstance()->getTotalStreamingAssets();
 }
 
 void Cutscene::initialize()
 {
-    TextureManager::getInstance()->loadStreamingAssets(this);
+    TextureManager::getInstance()->
+		loadStreamingAssets(this);
 }
 
 void Cutscene::update(sf::Time deltaTime)

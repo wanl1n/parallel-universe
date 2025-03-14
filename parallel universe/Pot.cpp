@@ -17,8 +17,6 @@ void Pot::initialize()
 	watered = TextureManager::getInstance()->getFromTextureMap("pot_watered", 0);
 	this->sprite = new sf::Sprite(*unwatered);
 	this->sprite->setTexture(*unwatered);
-
-	AudioManager::getInstance()->loadAudioList(name, "zen", true);
 }
 
 void Pot::processInput(sf::Event event)
@@ -46,7 +44,7 @@ void Pot::water()
 		this->ticks = 0;
 		this->dry = false;
 		this->sprite->setTexture(*watered);
-		AudioManager::getInstance()->playSFX(name + " zen", 1);
+		AudioManager::getInstance()->playSFX("Loading zen", 2);
 		score++;
 	}
 }

@@ -1,15 +1,18 @@
 #pragma once
 #include "AGameObject.h"
-class LoadingText : public AGameObject
+class MoneyCounter : public AGameObject
 {
 public:
-	LoadingText();
-	~LoadingText();
+	MoneyCounter(int* money);
+	~MoneyCounter();
 	void initialize() override;
 	void processInput(sf::Event event) override;
 	void update(sf::Time deltaTime) override;
 	void draw(sf::RenderWindow* targetWindow) override;
 
 private:
-	sf::Text* messageText;
+	int* money;
+	sf::Text* moneyText;
+
+	void updateScore();
 };

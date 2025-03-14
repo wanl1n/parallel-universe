@@ -11,7 +11,7 @@ public:
 	typedef std::vector<std::string> ObjectList;
 	enum ScreenName { main, loading, game};
 
-	Screen(ScreenName name);
+	Screen(ScreenName name, int* money);
 	~Screen();
 	virtual void initializeDisplay();
 
@@ -29,4 +29,5 @@ protected:
 	ScreenName name;
 	ObjectList objectList;
 	bool load = true;
+	int* score;
 };
