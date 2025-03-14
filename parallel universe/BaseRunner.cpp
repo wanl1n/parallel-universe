@@ -11,7 +11,7 @@ const sf::Time BaseRunner::TIME_PER_FRAME = sf::seconds(1.f / FRAME_RATE);
 BaseRunner* BaseRunner::sharedInstance = NULL;
 
 BaseRunner::BaseRunner() :
-	window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "Meowrapy", sf::Style::Close) {
+	window(sf::VideoMode(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT)), "Plants vs Zombies: Deluxe Loading Edition", sf::Style::Close) {
 
 	ShowWindow(window.getNativeHandle(), SW_SHOWMAXIMIZED);
 
